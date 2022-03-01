@@ -101,7 +101,13 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList() {
+  let total = 0
+  for (let i = 0; i < arguments.length; i++) {
+    total += arguments[i]
+  }
+  return total
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -121,7 +127,13 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  if (n2 === 0) {
+    return Infinity
+  } else {
+    return n1 % n2
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -140,7 +152,17 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  if (n2 < n1) {
+    return 'First argument must be less than second'
+  } else {
+    const rangeArray = []
+    for (let i = n1; i < n2; i++) {
+      rangeArray.push(i)
+    }
+    return rangeArray
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -155,7 +177,13 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  let reversed = ''
+  for (let i = string.length - 1; i >= 0; i--) {
+    reversed += string[i]
+  }
+  return reversed.toUpperCase()
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
@@ -172,7 +200,9 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  return string.slice(1, -1)
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
@@ -191,7 +221,17 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  const counts = {}
+  for (let i = 0; i < string.length; i++) {
+    if (counts[string[i]]) {
+      counts[string[i]] += 1
+    } else {
+      counts[string[i]] = 1
+    }
+  }
+  return counts
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -213,7 +253,13 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  if (n.toString().length >= length) {
+    return n.toString()
+  } else {
+    return char.repeat(length - n.toString().length) + n.toString()
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
