@@ -12,7 +12,9 @@ Examples:
 sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
-function sayHello() {}
+function sayHello() {
+  return "Hello!";
+}
 /*-----------------------------------------------------------------
 Challenge: 01-addOne
 
@@ -28,7 +30,10 @@ addOne(1) //=> 2
 addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
-function addOne(num) {}
+function addOne(num) {
+  num = num + 1;
+  return num;
+}
 /*-----------------------------------------------------------------
 Challenge: 02-addTwoNumbers
 
@@ -47,7 +52,14 @@ addTwoNumbers(0, 0) //=> 0
 addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
-function addTwoNumbers(num1, num2) {}
+function addTwoNumbers(num1, num2) {
+  if (typeof num1 === 'number' && typeof num2 === 'number') {
+    let sum = num1 + num2;
+    return sum;
+  } else {
+    return NaN;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
 
@@ -66,7 +78,17 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-function sumNumbers(nums) {}
+function sumNumbers(nums) {
+  if(nums.length > 0) {
+    let sum = 0;
+    for(i=0; i < nums.length; i++){
+      sum = sum + nums[i];
+    }
+    return sum;
+  } else {
+    return 0;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 04-addList
 
@@ -85,7 +107,18 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList() {
+  console.log(arguments);
+  if(arguments.length > 0) {
+    let sum = 0;
+    for(i=0; i < arguments.length; i++){
+      sum = sum + arguments[i];
+    }
+    return sum;
+  } else {
+    return 0;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -105,7 +138,26 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  // With modulus:
+  // if (n2 === 0) {
+  //   return Infinity;
+  // } else {
+  //   return n1 % n2;
+  // }
+  
+  // Without modulus:
+//   let difference = n1 - n2;
+//   // let dividend;
+//   let remainder;
+//   while (difference > n2) {
+//     // dividend = dividend + 1;
+//     n1 = difference;
+//     difference = n1 - n2;
+//   }
+//   remainder = n2 - difference;
+//   return remainder;
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
