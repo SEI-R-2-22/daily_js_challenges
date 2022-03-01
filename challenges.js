@@ -150,7 +150,17 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  let newArray = []
+  if (n1 > n2) {
+    return 'First argument must be less than second'
+  } else {
+    for (let i = 0; i < n2; i++) {
+      newArray.push[n1 + i]
+    }
+    return newArray
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -165,7 +175,10 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  let newStr = string.split('').reverse().join('').toUpperCase()
+  return newStr
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
