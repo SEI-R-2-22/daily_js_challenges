@@ -100,10 +100,10 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList(nums) {
+function addList() {
   sum = 0
-  for (let i = 0; i < nums.length; i++) {
-    sum += nums[i]
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i]
   }
   return sum
 }
@@ -126,7 +126,10 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  if (n2 === 0) return Infinity
+  return n1 % n2
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
