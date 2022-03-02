@@ -12,7 +12,9 @@ Examples:
 sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
-function sayHello() {}
+function sayHello() {
+  return "Hello!";
+}
 /*-----------------------------------------------------------------
 Challenge: 01-addOne
 
@@ -28,7 +30,9 @@ addOne(1) //=> 2
 addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
-function addOne(num) {}
+function addOne(num) {
+  return num + 1;
+}
 /*-----------------------------------------------------------------
 Challenge: 02-addTwoNumbers
 
@@ -47,7 +51,13 @@ addTwoNumbers(0, 0) //=> 0
 addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
-function addTwoNumbers(num1, num2) {}
+function addTwoNumbers(num1, num2) {
+   if (Number.isInteger(num1) && Number.isInteger(num2)) {
+     return num1 + num2;
+   } else {
+     return NaN;
+   }
+}
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
 
@@ -66,7 +76,13 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-function sumNumbers(nums) {}
+function sumNumbers(nums) {
+  let total = 0;
+  for (let i = 0; i < nums.length; i++){
+    total += nums[i];
+  }
+  return total;
+}
 /*-----------------------------------------------------------------
 Challenge: 04-addList
 
@@ -85,7 +101,13 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList() {
+  let total = 0;
+  for (let i = 0; i < arguments.length; i++){
+    total += arguments[i];
+  }
+  return total;
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -105,7 +127,13 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  if (n2 ===  0) {
+    return Infinity;
+  } else {
+    return n1 % n2;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -124,7 +152,17 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  let arr = [];
+  if (n1 > n2) {
+    return "First argument must be less than second";
+  } else {
+    for (let i = n1; i < n2; i++){
+      arr.push(i);
+    }
+    return arr;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -139,7 +177,13 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+// function reverseUpcaseString(string) {
+//   let reverseWrd = '';
+//   for (let i of string){
+//     reverseWrd = (i + reverseWrd);
+//   }
+//   return reverseWrd.toUpperCase;
+// }
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
