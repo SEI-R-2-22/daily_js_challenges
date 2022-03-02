@@ -209,7 +209,10 @@ function removeEnds(string) {
   if (string.length < 3) {
     return ''
   } else {
-    let newStr = string.split('')
+    let newArray = string.split('')
+    let first = newArray.shift()
+    let last = newArray.pop()
+    let newStr = newArray.join('')
     return newStr
   }
 }
