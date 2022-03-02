@@ -105,7 +105,17 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList() {
+  let total = 0
+  if (arguments.length === 0) {
+    return 0
+  } else {
+    for (let i = 0; i < arguments.length; i++) {
+      total = total + arguments[i]
+    }
+    return total
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -155,8 +165,8 @@ function range(n1, n2) {
   if (n1 > n2) {
     return 'First argument must be less than second'
   } else {
-    for (let i = 0; i < n2; i++) {
-      newArray.push[n1 + i]
+    for (n1; n1 < n2; n1++) {
+      newArray.push(n1)
     }
     return newArray
   }
@@ -195,7 +205,14 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  if (string.length < 3) {
+    return ''
+  } else {
+    let newStr = string.split('')
+    return newStr
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
