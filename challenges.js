@@ -98,7 +98,12 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList(nums) {
+  const sum = nums.reduce((a,b) => {
+    return a + b
+  })
+  return sum;
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -140,7 +145,11 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  const rangeA = (n1,n2) =>
+  n1 > n2 ? [] : [n1, ...range(n1 + 1, n2)];
+  console.log(range(1, 4))
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
