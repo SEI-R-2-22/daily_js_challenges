@@ -133,7 +133,13 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  if (n2 === 0) {
+    return Infinity
+  } else {
+    return n1 % n2
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -157,8 +163,8 @@ function range(n1, n2) {
     return 'First argument must be less than second'
   } else {
     let arr = []
-    for (num1; num1 < num2; num1++) {
-      arr.push(num1)
+    for (n1; n1 < n2; n1++) {
+      arr.push(n1)
     }
     return arr
   }
@@ -177,7 +183,13 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  let newStr = ''
+  for (let i = string.length - 1; i >= 0; i--) {
+    newStr += string[i]
+  }
+  return newStr.toUpperCase()
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
@@ -194,7 +206,13 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  let newStr = ''
+  for (let i = 1; i < string.length - 1; i++) {
+    newStr += string[i]
+  }
+  return newStr
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
