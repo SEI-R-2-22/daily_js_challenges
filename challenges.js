@@ -140,23 +140,30 @@ computeRemainder(10.5, 3) //=> 1.5
 // Your solution for 05-computeRemainder:
 function computeRemainder(n1, n2) {
   // With modulus:
+  if (n2 === 0) {
+    return Infinity;
+  } else {
+    return n1 % n2;
+  }
+  
+  // Without modulus:
+
   // if (n2 === 0) {
   //   return Infinity;
   // } else {
-  //   return n1 % n2;
+  //   let sum = 0;
+  //   let remainder;
+  //   while (sum <  (n1-sum)) {
+  //     sum = sum + n2;
+  //     remainder = n1 - sum;
+  //   }
+  //   if(remainder === n2){
+  //     return 0;
+  //   } else {
+  //     return Math.abs(remainder);
+  //   }
   // }
-  
-  // Without modulus:
-//   let difference = n1 - n2;
-//   // let dividend;
-//   let remainder;
-//   while (difference > n2) {
-//     // dividend = dividend + 1;
-//     n1 = difference;
-//     difference = n1 - n2;
-//   }
-//   remainder = n2 - difference;
-//   return remainder;
+
 }
 /*-----------------------------------------------------------------
 Challenge: 06-range
