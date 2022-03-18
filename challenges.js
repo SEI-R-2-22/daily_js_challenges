@@ -291,7 +291,15 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  let str = string.replace(/ /g, '').toLowerCase()
+  
+  let result = true
+  for (let i = 0; i <= str.length / 2; i++){
+    (str.charAt(i) !== str.charAt(str.length-1 - i)) ? result = false : i++
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -313,7 +321,17 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  if (str1.length !== str2.length) {
+    return NaN
+  } else {
+    let count = 0
+    for (let i = 0; i < str1.length; i++ ) {
+      (str1.charAt(i) !== str2.charAt(i) && count++)
+    }
+    return count
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
@@ -333,7 +351,13 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  let result = ''
+  for (let i =0 ; i < string.length ; i++) {
+    result += '-' + (string.charAt(i)).repeat(i+1)
+  }
+  return result.substring(1)
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
