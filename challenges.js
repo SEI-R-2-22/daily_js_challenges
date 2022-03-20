@@ -247,7 +247,21 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  let tempStr = ""
+  console.log(String(n).length < length)
+  if(String(n).length < length){
+    for(let i=0; i < length - String(n).length; i++){
+      tempStr = tempStr + char
+      console.log(tempStr)
+    }
+    tempStr = tempStr + String(n)
+    return tempStr
+  }else{
+    return String(n)
+  }
+}
+formatWithPadding(123, '0', 5)
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
