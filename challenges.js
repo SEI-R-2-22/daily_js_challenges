@@ -300,8 +300,6 @@ function isPalindrome(string) {
     newStr = newStr.replace(/\s/g, "")
     newStr = newStr.toLowerCase()
     let end = newStr.length-1
-    console.log(newStr)
-    console.log(end)
 
     for(let i = 0; i < string.length; i++){
       if(newStr[i] !== newStr[end]){
@@ -334,7 +332,19 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  if(str1.length != str2.length){
+    return NaN
+  }else{
+    let count = 0
+    for(let i = 0; i < str1.length; i++){
+      if(str1[i] !== str2[i]){
+        count++
+      }
+    }
+    return count
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
