@@ -128,11 +128,13 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 function computeRemainder(n1, n2) {
+  let remainder = 0
   if (n2 === 0) {
     return Infinity
   }else {
-    return n1 / n2
+    remainder = n1 % n2
   }
+  return remainder
 }
 /*-----------------------------------------------------------------
 Challenge: 06-range
@@ -152,7 +154,17 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  let result = []
+  if (n1 > n2) {
+    return "First argument must be less than second"
+  } else {
+    for (i = n1; i <= n2 - 1; i++) {
+      result.push(i)
+    }
+    return result
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
