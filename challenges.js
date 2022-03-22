@@ -256,7 +256,19 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  let pad = ''
+  if (n.length > length) {
+    return n.toString()
+  } else {
+    let padLength = length - n.toString().length
+    for (let i = 0; i < padLength; i++) {
+      pad += char
+    }
+    let answer = pad + n
+    return answer.toString()
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
@@ -277,7 +289,17 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  let stringCheck = string.replace(/ /g, '').toUpperCase()
+  let newStr = stringCheck.split('').reverse().join('')
+  if (stringCheck === newStr) {
+    return true
+  } else if (string === '') {
+    return true
+  } else {
+    return false
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -299,7 +321,23 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  let count = 0
+  if (str1.length != str2.length) {
+    return NaN
+  } else if (str1 === str2) {
+    return 0
+  } else {
+    let str1Array = str1.split('')
+    let str2Array = str2.split('')
+    for (let i = 0; i < str1Array.length; i++) {
+      if (str1Array[i] !== str2Array[i]) {
+        count++
+      }
+    }
+    return count
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
@@ -319,7 +357,21 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  let newMumble = []
+  if (string.length === 1) {
+    return string
+  }
+  for (let i = 0; i < string.length; i++) {
+    if (i === 0) {
+      newMumble.push(string[i])
+    }
+    if (i != 0) {
+      newMumble.push('-' + string[i].repeat(i + 1))
+    }
+  }
+  return newMumble.join('')
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
@@ -337,7 +389,9 @@ fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
 fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-function fromPairs(arr) {}
+function fromPairs(arr) {
+  arr.forEach((a) => {})
+}
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
