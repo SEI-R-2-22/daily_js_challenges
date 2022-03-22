@@ -612,7 +612,10 @@ toCamelCase( 'Mama-mia' ) // => 'MamaMia'
 toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
-function toCamelCase(string) {}
+function toCamelCase(string) {
+  str.toLowerCase().replace(/(?:^\w|[A-Z]|\b\w)/g, 
+  (ltr, idx) => idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()).replace(/\s+/g, '');
+}
 /*-----------------------------------------------------------------
 Challenge: 27-countTheBits
 
