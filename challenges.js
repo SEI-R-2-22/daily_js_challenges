@@ -148,7 +148,15 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(a, b) {
+  if (a > b) return 'First argument must be less than second'
+
+  let range = []
+  for (let i = a; i < b; i++) {
+    range.push(i)
+  }
+  return range
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -163,7 +171,13 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  return string
+    .split('')
+    .reverse()
+    .map((char) => char.toUpperCase())
+    .join('')
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
@@ -180,7 +194,14 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  if (string.length < 3) return ''
+  let result = ''
+  for (let i = 1; i < string.length - 1; i++) {
+    result += string[i]
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
@@ -199,7 +220,18 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  let result = {}
+  for (var i = 0; i < string.length; i++) {
+    let letter = string.charAt(i)
+    if (result[letter]) {
+      result[letter]++
+    } else {
+      result[letter]
+    }
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -221,7 +253,9 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  return n.toFixed(0).padStart(length, char)
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
