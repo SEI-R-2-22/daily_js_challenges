@@ -400,10 +400,14 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
 function mergeObjects(obj1, obj2) {
-  for (let i = 1; i < arguments.length; i++){
-    obj1 = {...obj1, ...arguments[i]}
+  if (obj1 === {}){
+    return obj1 = {...obj2}
+  } else {
+    for (let i = 1; i < arguments.length; i++){
+      obj1 = {...obj1, ...arguments[i]}
+    }
+    return obj1
   }
-  return obj1
 }
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
@@ -438,7 +442,15 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-function findHighestPriced(arr) {}
+function findHighestPriced(arr) {
+  let indexOfHighest = 0
+  for (let i = 1; i<arr.length; i++) {
+     if (arr[i].price > arr[indexOfHighest].price) {
+       indexOfHighest = i
+     }
+  }
+  return arr[indexOfHighest]
+}
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
