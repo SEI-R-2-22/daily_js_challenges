@@ -390,7 +390,9 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 function fromPairs(arr) {
-  arr.forEach((a) => {})
+  arr.forEach((a) => {
+    this.name
+  })
 }
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
@@ -531,7 +533,10 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-function flatten(arr) {}
+function flatten(arr) {
+  const flattenedArray = arr.flat(Infinity)
+  return flattenedArray
+}
 /*-----------------------------------------------------------------
 Challenge: 20-isPrime
 
@@ -551,7 +556,15 @@ isPrime(29) //=> true
 isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
-function isPrime(n) {}
+function isPrime(n) {
+  if (n === 2) {
+    return true
+  } else if (n % 2 === 0 || n === 1 || Number.isInteger(n) === false) {
+    return false
+  } else {
+    return true
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
 
