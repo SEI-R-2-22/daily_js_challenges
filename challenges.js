@@ -217,7 +217,18 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  let obj = {}
+  for (let i = 0; i < string.length; i++) {
+    let char = string.charAt(i)
+    if (obj[char]) {
+      obj[char]++
+    } else {
+      obj[char] = 1
+    }
+  }
+  return obj
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -239,7 +250,15 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  let string = ''
+  let filler = length - n.toString().length
+  for (let i = 0; i < filler; i++) {
+    string += char
+  }
+  string += n
+  return string
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
@@ -260,7 +279,16 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  if (
+    string.replace(/\s+/g, '').toLowerCase() ===
+    string.replace(/\s+/g, '').toLowerCase().split('').reverse().join('')
+  ) {
+    return true
+  } else {
+    return false
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -282,7 +310,19 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  let diff = 0
+  if (str1.length === str2.length) {
+    for (let i = 0; i < str1.length; i++) {
+      if (str1[i] !== str2[i]) {
+        diff += 1
+      }
+    }
+    return diff
+  } else {
+    return NaN
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
