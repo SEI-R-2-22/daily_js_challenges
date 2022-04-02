@@ -276,7 +276,14 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  string = string.toLowerCase()
+  while (string.includes(' ')) string = string.replace(' ', '')
+  for (let i = 0; i < Math.floor(string.length / 2); i++) {
+    if (string.charAt(i) !== string.charAt(string.length - i - 1)) return false
+  }
+  return true
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -298,7 +305,14 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  if (str1.length !== str2.length) return NaN
+  let count = 0
+  for (let i = 0; i < str1.length; i++) {
+    if (str1.charAt(i) !== str2.charAt(i)) count++
+  }
+  return count
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
@@ -318,7 +332,13 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  let returns = ''
+  for (let i = 0; i < string.length; i++) {
+    returns += ((i || '') && '-') + string.charAt(i).repeat(i + 1)
+  }
+  return returns
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
@@ -336,7 +356,13 @@ fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
 fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-function fromPairs(arr) {}
+function fromPairs(arr) {
+  let object = {}
+  arr.forEach(function (kvArr) {
+    object[kvArr[0]] = kvArr[1]
+  })
+  return object
+}
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
@@ -354,7 +380,9 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-function mergeObjects(obj1, obj2) {}
+function mergeObjects(target, ...objects) {
+  return Object.assign(target, ...objects)
+}
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
@@ -388,7 +416,17 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-function findHighestPriced(arr) {}
+function findHighestPriced(arr) {
+  let highest = 0
+  let result
+  arr.forEach(function (item) {
+    if (item.price > highest) {
+      highest = item.price
+      result = item
+    }
+  })
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
@@ -415,7 +453,13 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
+function mapArray(arr, cb) {
+  let newArray = []
+  arr.forEach(function (element, index) {
+    newArray.push(cb(element, index))
+  })
+  return newArray
+}
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
@@ -449,7 +493,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(arr, acc, value) {
+  let reduction = value
+  arr.forEach(function (element, index) {
+    reduction = acc(reduction, element, index)
+  })
+  return reduction
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
