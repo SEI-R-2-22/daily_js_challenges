@@ -76,8 +76,8 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 function sumNumbers(nums) {
-  var sum = 0
-  for (var i = 0; i < nums.length; i++) {
+  let sum = 0
+  for (i = 0; i < nums.length; i++) {
     sum += nums[i]
   }
   return sum
