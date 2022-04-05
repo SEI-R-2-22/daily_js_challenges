@@ -13,7 +13,7 @@ sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
 function sayHello() {
-  console.log('Hello!')
+  return('Hello!')
 }
 /*-----------------------------------------------------------------
 Challenge: 01-addOne
@@ -124,8 +124,7 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 function computeRemainder(n1, n2) {
-  computeRemainder = n1 % n2
-  return(computeRemainder)
+  return n1 % n2
 }
 /*-----------------------------------------------------------------
 Challenge: 06-range
