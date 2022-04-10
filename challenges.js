@@ -509,7 +509,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(array, callback, initialValue) {
+  let accumulator = initialValue
+  array.forEach((element, index) => {
+    accumulator = callback(accumulator, element, index)
+  })
+  return accumulator
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
