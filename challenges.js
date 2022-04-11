@@ -13,7 +13,7 @@ sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
 function sayHello() {
-  return ('Hello')
+  return 'Hello!'
 }
 /*-----------------------------------------------------------------
 Challenge: 01-addOne
@@ -59,7 +59,7 @@ function addTwoNumbers(num1, num2) {
     return NaN
   }
 }
-console.log(addTwoNumbers('hello',3))
+
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
 
@@ -79,7 +79,7 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 function sumNumbers(nums) {
-return arr.reduce((a, b) => {
+return nums.reduce((a, b) => {
   return a + b
 },0)
 }
@@ -103,10 +103,10 @@ add(7,-12) //=> -5
 // Your solution for 04-addList here:
 function addList() {
     let total = 0
-    for (let i = 0; i < num.length; i++) {
-      sum += num[i]
+    for (let i = 0; i < arguments.length; i++) {
+      total += arguments[i]
     }
-    return sum
+    return total
   }
 
 /*-----------------------------------------------------------------
@@ -128,7 +128,11 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  if ( n2 === 0 ) return Infinity
+  return n1 % n2
+}
+
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -147,7 +151,15 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  if ( n1 > n2) return "First argument must be less than second"
+
+  let result = []
+  for ( let n = n1; n < n2; n ++){
+    result.push(n)
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -162,12 +174,14 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  return string.split('').reverse().join('').toUpperCase()
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
 Difficulty: Basic
-
+w
 Prompt:
 
 - Write a function called removeEnds that accepts a single string argument, then returns the a string with the first and last characters removed.
@@ -179,7 +193,15 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  if (string.length < 3 ) {
+    return ''
+  } else {
+    let newString = string.slice(1,-1)
+    return newString
+  }
+}
+
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
@@ -198,7 +220,10 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  let results = [...string].reduce((res, char)=>(res[char] = (res[char] || 0) +1,res),{})
+  return results
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
