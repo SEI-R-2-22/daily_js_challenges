@@ -543,16 +543,17 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
 function reduceArray(arr, acc, value) {
-  let temp
+  let prev
+  let now
   for(let i = 0; i < arr.length; i++){
     if(i === 0){
-      temp = acc(value, arr[i], i)
+      prev = acc(value, arr[i], i)
+    }else if(i === arr.length-1){
+      return acc(prev, arr[i], i)
+    }else{
+      prev = acc(prev, arr[i], i)
+      // prev = now
     }
-    if(i === arr.length-1){
-      return acc(temp, arr[i], i)
-    }
-
-    temp = acc(temp, arr[i], i)
   }
 }
 /*-----------------------------------------------------------------
