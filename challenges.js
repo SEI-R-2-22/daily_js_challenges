@@ -439,7 +439,7 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 function findHighestPriced(arr) {
-  let obj = {}
+  let obj = arr[0]
   arr.forEach((item) => {
     if (obj.price < item.price) {
       obj = item
@@ -473,7 +473,14 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
+function mapArray(array, cb) {
+  let newArray = []
+  array.forEach((arr, idx) => {
+    let value = cb(arr, idx)
+    newArray.push(value)
+  })
+  return newArray
+}
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
