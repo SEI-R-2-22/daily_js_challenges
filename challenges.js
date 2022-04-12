@@ -519,7 +519,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(arr, acc, value) {
+  let result = value
+  arr.forEach((element, index) => {
+    result = acc(result, element, index)
+  })
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
@@ -546,7 +552,9 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-function flatten(arr) {}
+function flatten(arr) {
+  for (let i = 0; i < arr.length; i++) {}
+}
 /*-----------------------------------------------------------------
 Challenge: 20-isPrime
 
