@@ -553,14 +553,14 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
 function flatten(arr) {
-  const result = 0
-  arr.forEach((element) => {
-    if (Array.isArray(element)) {
-      result = result.concat(flatten(element))
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      result = result.concat(flatten(arr[i]))
     } else {
-      result.push(element)
+      result.push(arr[i])
     }
-  })
+  }
   return result
 }
 /*-----------------------------------------------------------------
