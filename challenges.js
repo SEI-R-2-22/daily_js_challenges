@@ -427,10 +427,8 @@ function mergeObjects(obj1, obj2) {
       currentObject = {...arguments[0], ...arguments[i+1]}
     }
     return currentObject
-  }
-  
+  }  
 }
-mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44})
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
@@ -677,7 +675,37 @@ balancedBrackets( '[(])' ) // => false
 balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
-function balancedBrackets(string) {}
+function balancedBrackets(string) {
+  let end = string.length-1
+  
+  if(string.length % 2 === 0){
+    for(let i = 0; i < end; i++){
+      console.log(`${string.charAt(i)}  ${string.charAt(end)}`)
+      if(string.charAt(i) == '(' && string.charAt(end) === ')'){
+        end--
+      }else if(string.charAt(i) == '(' && string.charAt(i+1) == ')'){
+        i++
+      }
+      else if(string.charAt(i) == '[' && string.charAt(end) == ']'){
+        end--
+      }
+      else if(string.charAt(i) == '[' && string.charAt(i+1) == ']'){
+        i++
+      }
+      else if(string.charAt(i) == '{' && string.charAt(end) == '}' ){
+        end--
+      }else if(string.charAt(i) == '{' && string.charAt(i+1) == '}'){
+        i++
+      }
+      else{
+        return false
+      }
+    }
+    return true
+  }else{
+    return false
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 24-isWinningTicket
 
