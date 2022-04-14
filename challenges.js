@@ -263,7 +263,22 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  if (string.length <= 1) return true
+  const newString = string
+    .split(' ')
+    .join('')
+    .split('')
+    .map((i) => i.toLowerCase())
+    .join('')
+  const isPalindrome = true
+  let j = newString.length - 1
+  for (let i = 0; i < newString.length / 2; i++) {
+    if (newString.at(i) !== newString.at(j)) return false
+    j--
+  }
+  return isPalindrome
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -285,7 +300,16 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  if (str1.length !== str2.length) return NaN
+  let diffCount = 0
+  const arr1 = str1.split('')
+  const arr2 = str2.split('')
+  for (let i = 0; i < str1.length; i++) {
+    if (arr1[i] !== arr2[i]) ++diffCount
+  }
+  return diffCount
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
