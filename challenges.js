@@ -680,7 +680,6 @@ function balancedBrackets(string) {
   
   if(string.length % 2 === 0){
     for(let i = 0; i < end; i++){
-      console.log(`${string.charAt(i)}  ${string.charAt(end)}`)
       if(string.charAt(i) == '(' && string.charAt(end) === ')'){
         end--
       }else if(string.charAt(i) == '(' && string.charAt(i+1) == ')'){
@@ -731,7 +730,41 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-function isWinningTicket(arr) {}
+function isWinningTicket(arr) {
+  let lottery = true
+  for(let i = 0; i < arr.length; i++){
+      let charFromNumber = String.fromCharCode(arr[i][1])
+      if(!arr[i][0].includes(charFromNumber)){
+        lottery = false
+        break
+      }
+  }
+  return lottery
+  //   if(arr.length == 1){
+  //     for(let i = 0; i < arr[0].length; i++){
+  //       if(arr[0].charCodeAt(i) == arr[1]){
+  //         lottery++
+  //       }
+  //     }
+  //   }else{
+  //       for(let j = 0; j < arr[i][0].length; j++){
+  //         if(arr[i][0].charCodeAt(j) == arr[i][1]){
+  //           lottery++
+  //           break
+  //         }
+  //       }
+
+  //   }
+  // }
+  // console.log(lottery)
+
+  // if(lottery === arr.length){
+  //   return true
+  // }else{
+  //   return false
+  // }
+}
+isWinningTicket([ ['ABC', 66], ['dddd', 15], ['Hello', 108] ])
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
 
