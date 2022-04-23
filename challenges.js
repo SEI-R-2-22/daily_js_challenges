@@ -311,7 +311,12 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  const result = ''
+  for(let i=0; i < str.legnth; i++){
+    result += ((i || '') && '-') + str.charAt(i).repeat(i+1)
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
@@ -712,7 +717,9 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
+function addChecker(arr, n) {
+  
+}
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
 
