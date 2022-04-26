@@ -367,7 +367,13 @@ fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
 fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-function fromPairs(arr) {}
+function fromPairs(arr) {
+  let obj = {}
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i][0]] = arr[i][1]
+  }
+  return obj
+}
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
@@ -385,7 +391,11 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-function mergeObjects(obj1, obj2) {}
+function mergeObjects(obj1, obj2, obj3) {
+  const merged = Object.assign(obj1, obj2, obj3)
+  return merged
+}
+
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
@@ -420,16 +430,28 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 function findHighestPriced(arr) {
-  let highestPrice = 0
-  let resultObj
-  arr.forEach(function (item) {
-    if (item.price > highestPrice) {
-      highestPrice = item.price
-      resultObj = item
+  let highest = 0
+  let obj = i
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].price > highest) {
+      highest = arr[i].price
+      obj = i
     }
-  })
-  return resultObj
+  }
+  return arr[obj]
 }
+
+// function findHighestPriced(arr) {
+//   let highestPrice = 0
+//   let resultObj
+//   arr.forEach(function (item) {
+//     if (item.price > highestPrice) {
+//       highestPrice = item.price
+//       resultObj = item
+//     }
+//   })
+//   return resultObj
+// }
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
