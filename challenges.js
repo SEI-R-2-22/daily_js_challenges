@@ -315,8 +315,7 @@ function hammingDistance(str1, str2) {
   if (str1.length !== str2.length) return NaN
   let count = 0
   for (i = 0; i < str1.length; i++) {
-    if (str1.charAt(i) !== str2.charAt(i)) 
-      count++
+    if (str1.charAt(i) !== str2.charAt(i)) count++
   }
   return count
 }
@@ -340,11 +339,17 @@ mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 function mumble(string) {
-  var result = ""
-  for (var i = 0; i<string.length; i++){
-    result += ((i ||") && '-')
+  let result = ''
+  for (i = 0; i < string.length; i++) {
+    for (let j = 0; j < i + 1; j++) {
+      result = result + string[i]
+    }
+    result = result + '-'
   }
+  return result.slice(0, -1)
 }
+//find the position of a letter within a string
+//
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
@@ -414,7 +419,17 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-function findHighestPriced(arr) {}
+function findHighestPriced(arr) {
+  let highestPrice = 0
+  let resultObj
+  arr.forEach(function (item) {
+    if (item.price > highestPrice) {
+      highestPrice = item.price
+      resultObj = item
+    }
+  })
+  return resultObj
+}
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
