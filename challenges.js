@@ -644,7 +644,18 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-function intersection(arr1, arr2) {}
+function intersection(arr1, arr2) {
+  let resultArr = []
+  let arr2Copy = [...arr2]
+  arr1.forEach((element) => {
+    let index = arr2Copy.indexOf(element)
+    if (index > -1) {
+      resultArr.push(arr2Copy.splice(index, 1)[0])
+    }
+  })
+  return resultArr
+}
+
 /*-----------------------------------------------------------------
 Challenge: 23-balancedBrackets
 
