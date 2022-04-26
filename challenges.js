@@ -32,7 +32,6 @@ addOne(-5) //=> -4
 // Your solution for 01-addOne here:
 function addOne(num) {
   return num++
-  
 }
 /*-----------------------------------------------------------------
 Challenge: 02-addTwoNumbers
@@ -149,9 +148,8 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 function range(n1, n2) {
-  const rangeA = (n1,n2) =>
   n1 > n2 ? [] : [n1, ...range(n1 + 1, n2)];
-  console.log(range(1, 4))
+  return(range(1, 4))
 }
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
@@ -189,7 +187,9 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  // str = string.slice(0, -1);
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
