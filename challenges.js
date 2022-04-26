@@ -454,7 +454,18 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-function mergeObjects(obj1, obj2) {}
+function mergeObjects(obj1, obj2) {
+  let objMerged = obj1
+  let obj2Merge = {}
+  for(let i = 0; i < arguments.length; i++){
+    obj2Merge = arguments[i]
+     for (const key in obj2Merge) {
+       objMerged[key] = obj2Merge[key]
+     }
+  }
+ 
+  return objMerged
+}
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
@@ -488,7 +499,17 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-function findHighestPriced(arr) {}
+function findHighestPriced(arr) {
+  let price = 0;
+  let highestPriced;
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i].price > price) {
+      price = arr[i].price
+      highestPriced = arr[i]
+    } 
+  }
+  return highestPriced
+}
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
@@ -515,7 +536,14 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
+function mapArray(arr, cb) {
+  let newArr = []
+    for(let i = 0; i < arr.length; i++) {
+      let newElement = cb(arr[i], i)
+      newArr.push(newElement)
+    }
+    return newArr
+}
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
@@ -549,7 +577,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(arr, acc, value) {
+  let accumulator = value
+  for(let i = 0; i < arr.length; i++) {
+      accumulator = acc(accumulator, arr[i], i)
+  }
+  return accumulator
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
