@@ -477,7 +477,13 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
+function mapArray(arr, cb) {
+  let result = []
+  for( let i = 0; i< arr.length; i++) {
+    result.push(cb(arr[i], i))
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
@@ -511,7 +517,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(arr, acc, value) {
+  let accumulator = value
+  for (let i = 0; i < arr.length; i++ ) {
+    accumulator = acc(accumulator, arr[i], i)
+  }
+  return accumulator
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
