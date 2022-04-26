@@ -391,7 +391,7 @@ function isPalindrome(str) {
   }
   return true
 }
-
+1
 /*--- Using regular expression to replace spaces ---*/
 // function isPalindrome(str) {
 //   // regular expression to replace all spaces

@@ -285,10 +285,10 @@ function isPalindrome(string) {
   string = string.toLowerCase()
   // loop to replace spaces
   while (string.includes(' ')) string = string.replace(' ', '')
-  return true
-  for (i = 0; i < Math.floor(string.length / 2); i++) {
+  for (var i = 0; i < Math.floor(string.length / 2); i++) {
     if (string.charAt(i) !== string.charAt(string.length - i - 1)) return false
   }
+  return true
 }
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
@@ -315,7 +315,8 @@ function hammingDistance(str1, str2) {
   if (str1.length !== str2.length) return NaN
   let count = 0
   for (i = 0; i < str1.length; i++) {
-    if (str1.charAt(i) !== str2.charAt(i)) count++
+    if (str1.charAt(i) !== str2.charAt(i)) 
+      count++
   }
   return count
 }
@@ -338,7 +339,12 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  var result = ""
+  for (var i = 0; i<string.length; i++){
+    result += ((i ||") && '-')
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
