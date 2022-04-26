@@ -234,7 +234,10 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  let newArr = string.split('')
+  let letters = newArr.reduce((allLetters, arr) => {})
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -683,7 +686,16 @@ getNumForIP( '192.156.99.15' ) // => 3231474447
 getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
-function getNumForIP(bits) {}
+function getNumForIP(bits) {
+  let total = 0
+  let numbers = bits.replace(/\D/g, ' ').split(' ')
+  total =
+    numbers[0] * 256 ** 3 +
+    numbers[1] * 256 ** 2 +
+    numbers[2] * 256 ** 1 +
+    numbers[3] * 256 ** 0
+  return total
+}
 /*-----------------------------------------------------------------
 Challenge: 26-toCamelCase
 
