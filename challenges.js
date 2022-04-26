@@ -211,7 +211,11 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 function reverseUpcaseString(string) {
-
+  let reverseString = '';
+  for(i = string.length - 1; i >=0; i--) {
+    reverseString += string[i]
+  }
+  return reverseString.toUpperCase();
 }
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
@@ -229,7 +233,15 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  if(string.length < 3){
+    return "";
+  } else {
+    let end = string.length - 1;
+    let newString = string.slice(1, end);
+    return newString;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
@@ -248,7 +260,22 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  // define empty object
+  let charObj = {};
+
+  // iterate through string characters
+  for(let i = 0; i < string.length; i++){
+    // conditionally check if string already exists in object:
+    if(!(string[i] in charObj)) {
+      // if character does not already exist in object, add it:
+      charObj[string[i]] = 1;
+    } else {
+      charObj[string[i]] ++;
+    }
+  }
+  return charObj;
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -270,7 +297,21 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  let newString = '';
+  let stringedN = n.toString()
+  let padding = length - stringedN.length;
+  if (padding > 0) {
+    let finalString = '';
+    for(let i = 0; i < padding; i++) {
+      newString = newString.concat(char);
+    }
+    finalString = newString + stringedN;
+    return finalString;
+  } else {
+  return stringedN;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
@@ -291,7 +332,22 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  if(string.length <= 1) {
+    return true
+  } else {
+    let noSpaceLower = string.replaceAll(' ', '').toLowerCase()
+    let revString = ''
+    for(let i = noSpaceLower.length - 1; i >= 0; i--){
+      revString += noSpaceLower[i];
+    }
+    if (revString === noSpaceLower) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -313,7 +369,19 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
+function hammingDistance(str1, str2) {
+  if (str1.length === str2.length) {
+    let sum = 0;
+    for(let i = 0; i < str1.length; i++) {
+      if(str1[i] !== str2[i]) {
+        sum ++;
+      }
+    }
+    return sum;
+  } else {
+    return NaN
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 13-mumble
 
@@ -333,7 +401,18 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
+function mumble(string) {
+  let newString = string[0]
+  for (let i = 1; i < string.length; i++){
+    let char = string[i]
+    let charString = ''
+    for (let j = 0; j <= i; j++){
+      charString = charString.concat(char)  
+    }
+    newString = newString.concat(`-${charString}`)
+  }
+  return newString
+}
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
 
@@ -351,7 +430,13 @@ fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
 fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-function fromPairs(arr) {}
+function fromPairs(arr) {
+  let obj = {}
+  for(let i = 0; i < arr.length; i++) {
+    obj[arr[i][0]] = arr[i][1]    
+  }
+  return obj
+}
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
