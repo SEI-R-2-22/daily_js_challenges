@@ -476,6 +476,11 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
   return `${i + 1} - ${f}`;
 } );
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
+  let newArr = []
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(`${arr[i]} ${i}`)
+  }
+  return newArr
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
 function mapArray(arr, cb) {}
