@@ -393,9 +393,14 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 function fromPairs(arr) {
+  let obj = {}
   arr.forEach((a) => {
-    this.name
+    obj = {
+      ...obj,
+      [a[0]]: a[1]
+    }
   })
+  return obj
 }
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
@@ -746,7 +751,16 @@ countTheBits( 255 ) //=> 8
 countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
-function countTheBits(n) {}
+function countTheBits(n) {
+  let binary = n.toString(2).split('')
+  let bits = 0
+  binary.forEach((number) => {
+    if (number == 1) {
+      bits++
+    }
+  })
+  return bits
+}
 /*-----------------------------------------------------------------
 Challenge: 28-gridTrip
 
