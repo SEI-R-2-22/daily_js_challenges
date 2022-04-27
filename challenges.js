@@ -53,14 +53,15 @@ addTwoNumbers('Hello', 5) //=> NaN
 // Your solution for 02-addTwoNumbers here:
 function addTwoNumbers(num1, num2) {
   let sum = 0;
-  if(num1 == NaN || num2 == NaN) {
-    sum=NaN
+  if(typeof num1 === 'number' && typeof num2 === 'number') {
+    
+    sum += num1;
+    sum += num2;
     return sum;
+    
  }
  else {
-   sum += num1;
-   sum += num2;
-   return sum;
+  return NaN;
  }
 }
 /*-----------------------------------------------------------------
@@ -83,15 +84,12 @@ sumNumbers([]) //=> 0
 // Your solution for 03-sumNumbers here:
 function sumNumbers(nums) {
   let sum = 0;
-  if(nums=[]) {
-    return 0;
-  }
-  else {
+  
     for(let i=0; i<nums.length; i++) {
       sum=sum+nums[i];
     }
     return sum;
-  }
+  
   
 }
 
@@ -114,10 +112,11 @@ add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
 function addList() {
-  const sum = arguments.reduce((acc, value) => {
-    return accumulator + value
-  }, 0)
-  return sum;
+  let sum = 0
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i]
+  }
+  return sum
 }
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
@@ -138,7 +137,15 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  if (n1 === 0 || n2 === 0) {
+    return Infinity
+  }
+  else {
+  let rem = n1%n2
+  return rem
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -157,7 +164,20 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  let arr = []
+  let nope = "First argument must be less than second"
+  if (n1 > n2) {
+    return nope;
+    
+  }
+  else {
+    for (let i = n1; i < n2; i++) {
+      arr.push(i)
+    }
+    return arr;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -172,7 +192,13 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  let newString = ''
+  for (let i=0; i<string.length; i++) {
+    newString = string.charAt(i).toUpperCase() + newString
+  }
+  return newString;
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
@@ -189,7 +215,16 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  let length = string.length
+  if (length < 3) {
+    return "";
+  }
+  else {
+    let newString = string.slice(1, length-1)
+    return newString;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
@@ -208,7 +243,18 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  let count = {}
+  for (let i = 0; i < string.length; i++) {
+    let letter = string.charAt(i)
+    if (count[letter]) {
+      count[letter]++
+    } else {
+      count[letter] = 1
+    }
+  }
+  return count;
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -230,7 +276,21 @@ formatWithPadding(42, '*', 10); //=> "********42"
 formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
+function formatWithPadding(n, char, length) {
+  let padding = ''
+  let numbString = n.toString()
+  if (numbString.length >= length) {
+    return numbString
+  }
+  else {
+    let diff = length - numbString.length
+    for (let i = 0; i < diff; i++) {
+      padding = padding.concat(char)
+    }
+    let newString = padding.concat(numbString)
+    return newString;
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
 
