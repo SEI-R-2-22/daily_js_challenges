@@ -188,7 +188,7 @@ removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 function removeEnds(string) {
-  // str = string.slice(0, -1);
+  return string.slice(1, -1);
 }
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
