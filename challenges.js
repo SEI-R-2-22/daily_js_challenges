@@ -610,7 +610,21 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-function flatten(arr) {}
+function flatten(arr) {
+  let flatArray = []
+  // helper function
+  const handleArray = (arr) => {
+      for(let i = 0; i < arr.length; i++) {
+        if(Array.isArray(arr[i])) {
+            handleArray(arr[i])
+        } else {
+            flatArray.push(arr[i])
+          } 
+        }
+      }
+  handleArray(arr)
+  return flatArray
+}
 /*-----------------------------------------------------------------
 Challenge: 20-isPrime
 
@@ -630,7 +644,21 @@ isPrime(29) //=> true
 isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
-function isPrime(n) {}
+function isPrime(n) {
+  let primeIndicator = true
+  if (n === 1) {
+    primeIndicator = false
+  } else if (Number.isInteger(n) !== true) {
+    primeIndicator = false
+  } else {
+    for (let i = 2; i < 10; i++){
+      if (n % i === 0 && i !== n) {
+        primeIndicator = false
+      }
+    }
+  }
+  return primeIndicator
+}
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
 
@@ -654,7 +682,37 @@ primeFactors(105) //=> [3, 5, 7]
 primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
-function primeFactors(n) {}
+function primeFactors(n) {
+  let reducerArray = []
+  const reduceFactors = (n) => {
+    for(let i = 2; i < 10; i++){
+      if (n % i === 0) {
+        for(let j = 2; j < 10; j++){
+          if(i % j === 0) {
+            reduceFactors(i)
+          } else {
+            reducerArray.push(i)
+          }
+        }
+      }
+    }     
+  }
+  if (n <= 1) {
+    return []
+  } else if (!Number.isInteger(n)) {
+    return []
+  } else {
+    for (let i = 2; i < 10; i++){
+      if (n % i === 0 && i !== n) {
+        reduceFactors(n)
+        return reducerArray
+
+      } else {
+        return [n]
+      }
+    }
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
 
