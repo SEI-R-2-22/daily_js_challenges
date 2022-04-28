@@ -101,7 +101,13 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList() {
+  var sum = 0
+  for (var i = 0; i < arguments.length; i++) {
+    sum += arguments[i]
+  }
+  return sum
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -121,7 +127,12 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  function computeRemainder(n1, n2) {
+    if (n2 === 0) return Infinity
+    return n1 - Math.floor(n1 / n2) * n2
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -140,7 +151,16 @@ range(1,1) //=> []
 range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
+function range(n1, n2) {
+  if (n1 > n2) return 'First argument must be less than second'
+
+  let range = []
+  for (let n = n1; n < n2; n++) {
+    range.push(n)
+  }
+
+  return range
+}
 /*-----------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -155,7 +175,13 @@ Examples:
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  let results = ''
+  for (let i = 0; i < str.length; i++) {
+    results = str.charAt(i).toUpperCase() + results
+  }
+  return results
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
@@ -172,7 +198,14 @@ removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  if (string.length < 3) return ''
+  let result = ''
+  for (let i = 1; i < string.length - 1; i++) {
+    result += string.charAt(i)
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
