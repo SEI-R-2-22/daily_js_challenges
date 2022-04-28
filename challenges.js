@@ -78,9 +78,9 @@ sumNumbers([]) //=> 0
 // Your solution for 03-sumNumbers here:
 
 function sumNumbers(nums) {
-  const sumNumbers = nums.reduce((a, b) => {
-  return a + b
-  }, 0)
+  let sum = 0;
+  for(let i=0; i < nums.lenth; i++){sum += nums[i]}
+  return sum
 }
   
 /*-----------------------------------------------------------------
@@ -102,11 +102,7 @@ add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
 function addList(nums) {
-  const sum = nums.reduce((a,b) => {
-    return a + b
-  })
-  return sum;
-}
+  nums.reduce((a, b) => {return a + b}, 0)}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -166,10 +162,8 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 function reverseUpcaseString(string) {
-    let splitString  = string.split("")
-    let reverseString = splitString.reverse()
-    let joinString = reverseString.join()
-    return joinString.toUpperCase()
+    let splitString  = string.split("").reverse().join("")
+    return splitString.toUpperCase()
 }
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
@@ -329,6 +323,7 @@ function mumble(string) {
   for(let i=0; i < str.legnth; i++){
     result += ((i || '') && '-') + str.charAt(i).repeat(i+1)
   }
+  return result
 }
 /*-----------------------------------------------------------------
 Challenge: 14-fromPairs
