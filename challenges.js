@@ -476,14 +476,21 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
   return `${i + 1} - ${f}`;
 } );
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
-  let newArr = []
-  for (let i = 0; i < arr.length; i++) {
-    newArr.push(`${arr[i]} ${i}`)
-  }
-  return newArr
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
+function mapArray(arr, cb) {
+  // let array = []
+  // for (let i = 0; i < array.length; i++) {
+  //   let result = cb(arr[i], i)
+  //   array.push(result)
+  // }
+  // return arr
+  let array = []
+  arr.map((x, index) => {
+    array.push(cb(x, index))
+  })
+  return array
+}
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
