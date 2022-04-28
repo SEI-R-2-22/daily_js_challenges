@@ -262,7 +262,8 @@ function isPalindrome(string) {
   string = string.toLowerCase()
   while (string.includes(' ')) string = string.replace(' ', '')
   for (let i = 0; i < Math.floor(string.length / 2); i++) {
-    if (string.charAt(i) !== str.charAt(str.length - i - 1)) return false
+    if (string.charAt(i) !== string.charAt(string.length - i - 1)) 
+    return false
   } 
     return true  
 }
@@ -288,7 +289,7 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 function hammingDistance(str1, str2) {
-  let dis = 0;
+  let distance = 0;
   if(str1.length === str2.length){
     for(let i=0; i < str1.length; i++){
       if(str1[i].toLowerCase() != str2[i].toLowerCase()){
@@ -319,8 +320,8 @@ mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 function mumble(string) {
-  const result = ''
-  for(let i=0; i < str.legnth; i++){
+  let result = ''
+  for(let i=0; i < string.legnth; i++){
     result += ((i || '') && '-') + str.charAt(i).repeat(i+1)
   }
   return result
