@@ -235,8 +235,16 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 function charCount(string) {
-  let newArr = string.split('')
-  let letters = newArr.reduce((allLetters, arr) => {})
+  let letters = string.split('')
+  let letterArray = letters.reduce((allLetters, letter) => {
+    if (letter in allLetters) {
+      allLetters[letter]++
+    } else {
+      allLetters[letter] = 1
+    }
+    return allLetters
+  }, {})
+  return letterArray
 }
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
@@ -419,7 +427,16 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-function mergeObjects(obj1, obj2) {}
+function mergeObjects(...args) {
+  let mergedObject = {}
+
+  for (let i = 0; i < args.length; i++) {
+    mergedObject = { ...mergedObject, ...args[i] }
+  }
+
+  return mergedObject
+}
+
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
 
@@ -453,7 +470,18 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-function findHighestPriced(arr) {}
+function findHighestPriced(arr) {
+  let highestPriced = arr.reduce((first, second) => {
+    if (first.price == second.price) {
+      return first
+    } else if (first.price > second.price) {
+      return first
+    } else {
+      return second
+    }
+  })
+  return highestPriced
+}
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
@@ -480,7 +508,13 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
+function mapArray(arr, cb) {
+  let mappedArray = []
+  arr.map((a, index) => {
+    mappedArray.push(cb(a, index))
+  })
+  return mappedArray
+}
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
@@ -617,7 +651,17 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-function intersection(arr1, arr2) {}
+function intersection(arr1, arr2) {
+  let commonArray = []
+  arr1.forEach((a) => {
+    arr2.forEach((b) => {
+      if (a === b) {
+        commonArray.push(a)
+      }
+    })
+  })
+  return commonArray
+}
 /*-----------------------------------------------------------------
 Challenge: 23-balancedBrackets
 
@@ -810,7 +854,17 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
+function addChecker(arr, n) {
+  let sum = 0
+  arr.forEach((a) => {
+    sum = sum + a
+  })
+  if (sum === n) {
+    return true
+  } else {
+    return false
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
 
