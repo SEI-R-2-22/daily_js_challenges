@@ -548,7 +548,11 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(arr, acc, value) {
+  let accumulator = value
+  let answer = arr.reduce(acc, accumulator)
+  return answer
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
@@ -769,7 +773,18 @@ toCamelCase( 'Mama-mia' ) // => 'MamaMia'
 toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
-function toCamelCase(string) {}
+function toCamelCase(string) {
+  let stringArray = string.split('')
+  for (let i = 0; i < stringArray.length; i++) {
+    if (stringArray[i].match(/[-|_+]/g)) {
+      let upper = stringArray[i + 1].toUpperCase()
+      stringArray.splice(i, 2)
+      stringArray.splice(i, 0, upper)
+    }
+  }
+  return stringArray.join('')
+}
+
 /*-----------------------------------------------------------------
 Challenge: 27-countTheBits
 
@@ -828,7 +843,47 @@ gridTrip( [5, 10], 'D5L15U2' ) //-> [2, -5]
 gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
-function gridTrip(arr, string) {}
+function gridTrip(arr, string) {
+  let destArray = arr
+  let move = 0
+  let directions = string.split('')
+  for (let i = 0; i < directions.length; i++) {
+    if (directions[i].match(/U|u/g)) {
+      let j = i + 1
+      while (j < directions.length && directions[j].match(/\d/g)) {
+        move = move + directions[j]
+        j++
+      }
+      destArray[0] = destArray[0] + parseInt(move)
+      move = 0
+    } else if (directions[i].match(/D|d/g)) {
+      let j = i + 1
+      while (j < directions.length && directions[j].match(/\d/g)) {
+        move = move + directions[j]
+        j++
+      }
+      destArray[0] = destArray[0] - parseInt(move)
+      move = 0
+    } else if (directions[i].match(/L|l/g)) {
+      let j = i + 1
+      while (j < directions.length && directions[j].match(/\d/g)) {
+        move = move + directions[j]
+        j++
+      }
+      destArray[1] = destArray[1] - parseInt(move)
+      move = 0
+    } else if (directions[i].match(/R|r/g)) {
+      let j = i + 1
+      while (j < directions.length && directions[j].match(/[0-9]/g)) {
+        move = move + directions[j]
+        j++
+      }
+      destArray[1] = destArray[1] + parseInt(move)
+      move = 0
+    }
+  }
+  return destArray
+}
 /*-----------------------------------------------------------------
 Challenge: 29-addChecker
 
@@ -892,7 +947,12 @@ totalTaskTime( [2, 2, 3, 3, 4, 4], 2 ) //=> 9
 totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
-function totalTaskTime(arr, n) {}
+function totalTaskTime(arr, n) {
+  if (arr == []) {
+    return 0
+  } else {
+  }
+}
 
 /*-----------------------------------------------------------------*/
 module.exports = {
