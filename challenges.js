@@ -713,7 +713,18 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-function isWinningTicket(arr) {}
+function isWinningTicket(arr) {
+  let check = false
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][0].includes(String.fromCharCode(arr[i][1]))) {
+      check = true
+    } else {
+      check = false
+      break
+    }
+  }
+  return check
+}
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
 
@@ -910,15 +921,16 @@ addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
 function addChecker(arr, n) {
-  let sum = 0
-  arr.forEach((a) => {
-    sum = sum + a
-  })
-  if (sum === n) {
-    return true
-  } else {
-    return false
+  let check = false
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] == n) {
+        check = true
+      }
+    }
   }
+
+  return check
 }
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
