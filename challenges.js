@@ -657,13 +657,14 @@ intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 // Your solution for 22-intersection here:
 function intersection(arr1, arr2) {
   let commonArray = []
-  arr1.forEach((a) => {
-    arr2.forEach((b) => {
-      if (a === b) {
-        commonArray.push(a)
+  for (let i = 0; i < arr1.length && i < arr2.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        commonArray.push(arr1[i])
+        break
       }
-    })
-  })
+    }
+  }
   return commonArray
 }
 /*-----------------------------------------------------------------
@@ -687,7 +688,20 @@ balancedBrackets( '[(])' ) // => false
 balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
-function balancedBrackets(string) {}
+function balancedBrackets(string) {
+  let braceArray = string.split('')
+  let balanceCheck = []
+  for (let i = 0; i < string.length; i++) {
+    if ('([{'.includes(braceArray[i])) {
+      balanceCheck.push(braceArray[i])
+    } else {
+      if (!'()[]{}'.includes(balanceCheck.pop() + braceArray[i])) {
+        return false
+      }
+    }
+  }
+  return true
+}
 /*-----------------------------------------------------------------
 Challenge: 24-isWinningTicket
 
@@ -960,10 +974,112 @@ totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
 function totalTaskTime(arr, n) {
-  if (arr == []) {
-    return 0
-  } else {
+  let total = 0
+  let threadOne = []
+  let threadTwo = []
+  let threadThree = []
+
+  if (arr.length == 0) {
+    return total
+  } else if (n === 1) {
+    let sum = arr.reduce((first, second) => {
+      return first + second
+    })
+    total = sum / 1
+  } else if (n === 2) {
+    while (arr.length > 0) {
+      threadOne.push(arr[0])
+      arr.shift()
+      threadTwo.push(arr[0])
+      arr.shift()
+      for (let i = 0; i < threadOne.length && i < threadTwo.length; i++) {
+        if (threadOne[i] < threadTwo[i]) {
+          threadOne.push(arr[0])
+          arr.shift()
+        } else if (threadOne[i] == threadTwo[i]) {
+          threadOne.push(arr[0])
+          arr.shift
+        } else {
+          threadTwo.push(arr[0])
+          arr.shift()
+        }
+      }
+    }
+    let sumOne = threadOne.reduce((first, second) => {
+      return first + second
+    })
+    let sumTwo = threadTwo.reduce((first, second) => {
+      return first + second
+    })
+    if (sumOne > sumTwo) {
+      total = sumOne
+    } else {
+      total = sumTwo
+    }
+  } else if (n === 3) {
+    while (arr.length > 0) {
+      threadOne.push(arr[0])
+      arr.shift()
+      threadTwo.push(arr[0])
+      arr.shift()
+      threadThree.push(arr[0])
+      arr.shift()
+      console.log(
+        'thread one: ',
+        threadOne,
+        'thread two: ',
+        threadTwo,
+        'thread three: ',
+        threadThree
+      )
+      console.log('OG array: ', arr)
+      for (
+        let i = 0;
+        i < threadOne.length && threadTwo.length && threadThree.length;
+        i++
+      ) {
+        if (threadOne[i] < threadTwo[i] && threadOne[i] < threadThree[i]) {
+          threadOne.push(arr[0])
+          arr.shift()
+          break
+        } else if (threadTwo[i] < threadOne[i] && threadThree[i]) {
+          threadTwo.push(arr[0])
+          arr.shift()
+          break
+        } else if (threadThree[i] < threadOne[i] && threadTwo[i]) {
+          threadThree.push(arr[0])
+          arr.shift()
+          break
+        }
+      }
+      console.log(
+        'thread one: ',
+        threadOne,
+        'thread two: ',
+        threadTwo,
+        'thread three: ',
+        threadThree
+      )
+    }
+    //console.log('thread one: ', threadOne, 'thread two: ', threadTwo, 'thread three: ', threadThree)
+    let sumOne = threadOne.reduce((first, second) => {
+      return first + second
+    })
+    let sumTwo = threadTwo.reduce((first, second) => {
+      return first + second
+    })
+    let sumThree = threadThree.reduce((first, second) => {
+      return first + second
+    })
+    if (sumOne > sumTwo && sumThree) {
+      total = sumOne
+    } else if (sumTwo > sumOne && sumThree) {
+      total = sumTwo
+    } else {
+      total = sumThree
+    }
   }
+  return total
 }
 
 /*-----------------------------------------------------------------*/
