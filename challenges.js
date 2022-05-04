@@ -790,7 +790,15 @@ getNumForIP( '192.156.99.15' ) // => 3231474447
 getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
-function getNumForIP(bits) {}
+function getNumForIP(bits) {
+  let result = 0
+  for (let i = 3; i > 0; i--) {
+    result += parseInt(bits.slice(0, bits.indexOf('.'))) * 256 ** i
+    bits = bits.slice(bits.indexOf('.') + 1)
+  }
+  result += parseInt(bits)
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 26-toCamelCase
 
