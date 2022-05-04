@@ -709,8 +709,6 @@ function balancedBrackets(string) {
   if (openBrackets.length !== closingBrackets.length) {
     return false
   }
-  console.log(openBrackets, 'openbrackets')
-  console.log(closingBrackets, 'closing brac')
   let openBracket = ''
   let closingBracket = ''
   for (let i = 0; i < openBrackets.length; i++) {
@@ -865,7 +863,29 @@ countTheBits( 255 ) //=> 8
 countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
-function countTheBits(n) {}
+function countTheBits(n) {
+  let result = 0
+  let exponent = 0
+  if (n === 0) {
+    return 0
+  }
+  while (true) {
+    if (n - 2 ** exponent > 0) {
+      exponent++
+    } else {
+      if (n - 2 ** exponent === 0) {
+        return result + 1
+      } else {
+        n = n - 2 ** (exponent - 1)
+        result++
+        exponent = 0
+        if (n < 1) {
+          return result
+        }
+      }
+    }
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 28-gridTrip
 
