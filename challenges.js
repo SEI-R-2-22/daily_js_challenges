@@ -823,7 +823,23 @@ toCamelCase( 'Mama-mia' ) // => 'MamaMia'
 toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
-function toCamelCase(string) {}
+function toCamelCase(string) {
+  let result = ''
+  let changed = false
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === '-' || string[i] === '_') {
+      result += string[i + 1].toUpperCase()
+      changed = true
+    } else {
+      if (changed) {
+        changed = false
+      } else {
+        result += string[i]
+      }
+    }
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 27-countTheBits
 
