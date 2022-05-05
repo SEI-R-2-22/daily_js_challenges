@@ -764,7 +764,6 @@ function isWinningTicket(arr) {
   //   return false
   // }
 }
-isWinningTicket([ ['ABC', 66], ['dddd', 15], ['Hello', 108] ])
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
 
@@ -902,7 +901,16 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
+function addChecker(arr, n) {
+    for(let start = 0; start < arr.length-1; start++){
+        for(let i = 1; i < arr.length; i++){
+            if(arr[start] + arr[i] == n){
+                return true
+            }
+        }
+    }
+    return false
+}
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
 
