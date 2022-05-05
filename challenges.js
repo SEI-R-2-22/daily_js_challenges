@@ -792,7 +792,17 @@ addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
 function addChecker(arr, n) {
-  
+  for(i=0; i<arr.length; i++){
+    for(x=arr.legnth; x>0; x--){
+      if(parseInt(arr[x]) + parseInt(arr[i]) === n){
+        return true
+      }else if(parseInt(arr[i]) + parseInt(arr[i]) === n){
+        return true
+      }else{
+        return false
+      }
+    }
+  }
 }
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
