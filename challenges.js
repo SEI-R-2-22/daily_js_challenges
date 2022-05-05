@@ -909,7 +909,57 @@ gridTrip( [5, 10], 'D5L15U2' ) //-> [2, -5]
 gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
-function gridTrip(arr, string) {}
+function gridTrip(arr, string) {
+  let index = 0
+  let amount = ''
+  while (true) {
+    if (string[index] === 'U') {
+      amount = ''
+      index++
+      while (!isNaN(parseInt(string[index]))) {
+        amount += string[index]
+        index++
+      }
+      arr[0] = arr[0] + parseInt(amount)
+      if (index >= string.length) {
+        return arr
+      }
+    } else if (string[index] === 'D') {
+      amount = ''
+      index++
+      while (!isNaN(parseInt(string[index]))) {
+        amount += string[index]
+        index++
+      }
+      arr[0] = arr[0] - parseInt(amount)
+      if (index >= string.length) {
+        return arr
+      }
+    } else if (string[index] === 'R') {
+      amount = ''
+      index++
+      while (!isNaN(parseInt(string[index]))) {
+        amount += string[index]
+        index++
+      }
+      arr[1] = arr[1] + parseInt(amount)
+      if (index >= string.length) {
+        return arr
+      }
+    } else if (string[index] === 'L') {
+      amount = ''
+      index++
+      while (!isNaN(parseInt(string[index]))) {
+        amount += string[index]
+        index++
+      }
+      arr[1] = arr[1] - parseInt(amount)
+      if (index >= string.length) {
+        return arr
+      }
+    }
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 29-addChecker
 
@@ -935,7 +985,16 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
+function addChecker(arr, n) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = arr.length - 1; j >= i + 1; j--) {
+      if (arr[i] + arr[j] === n) {
+        return true
+      }
+    }
+  }
+  return false
+}
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
 
