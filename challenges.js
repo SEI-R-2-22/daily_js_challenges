@@ -1,205 +1,248 @@
 /*-----------------------------------------------------------------
 Challenge: 00-sayHello (example)
-
 Difficulty: Basic
-
 Prompt:
-
-Write a function called sayHello that returns the string "Hello!".
-
+  Write a function called sayHello that returns the string "Hello!".
 Examples:
-
-sayHello() //=> Hello!
+  sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
-function sayHello() {}
-/*-----------------------------------------------------------------
-Challenge: 01-addOne
+function sayHello() {
+  return "Hello!";
+}
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 01-addOne
 Difficulty: Basic
-
-Prompt:
-
-Write a function called addOne that takes a single number as an argument and returns that number plus 1.
-
+Prompt: 
+  Write a function called addOne that takes a single number as an argument and returns that number plus 1.
 Examples:
-
-addOne(1) //=> 2
-addOne(-5) //=> -4
+  addOne(1) //=> 2
+  addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
-function addOne(num) {}
-/*-----------------------------------------------------------------
-Challenge: 02-addTwoNumbers
+function addOne(num) {
+  return num + 1;
+}
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 02-addTwoNumbers
 Difficulty: Basic  
-
 Prompt:
-
-Write a function called addTwoNumbers that accepts two numeric arguments and returns the sum of those two numbers.
-If either argument is not a Number, return the value of NaN.
-
+  Write a function called addTwoNumbers that accepts two numeric arguments and returns the sum of those two numbers.
+  If either argument is not a Number, return the value of NaN.
 Examples:
-
-addTwoNumbers(5, 10) //=> 15
-addTwoNumbers(10, -2) //=> 8
-addTwoNumbers(0, 0) //=> 0
-addTwoNumbers('Hello', 5) //=> NaN
+  addTwoNumbers(5, 10) //=> 15
+  addTwoNumbers(10, -2) //=> 8
+  addTwoNumbers(0, 0) //=> 0
+  addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
-function addTwoNumbers(num1, num2) {}
-/*-----------------------------------------------------------------
-Challenge: 03-sumNumbers
+function addTwoNumbers(num1, num2) {
+  return (typeof num1 === 'number' && typeof num2 === 'number') ? num1 + num2 : NaN; 
+}
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 03-sumNumbers
 Difficulty: Basic  
-
 Prompt:
-
 - Write a function called sumNumbers that accepts a single array of numbers and returns the sum of the numbers in the array.
 - If the array is empty, return 0 (zero).
-
 Examples:
-
-sumNumbers([10]) //=> 10
-sumNumbers([5, 10]) //=> 15
-sumNumbers([2, 10, -5]) //=> 7
-sumNumbers([]) //=> 0
+  sumNumbers([10]) //=> 10
+  sumNumbers([5, 10]) //=> 15
+  sumNumbers([2, 10, -5]) //=> 7
+  sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-function sumNumbers(nums) {}
-/*-----------------------------------------------------------------
-Challenge: 04-addList
+function sumNumbers(nums) {
+  return nums.reduce((a,b) => a + b, 0);
+}
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 04-addList
 Difficulty: Basic
-
 Prompt:
-
-- Write a function called addList that accepts any quantity of numbers as arguments, adds them together and returns the resulting sum.
-- Assume all parameters will be numbers.
-- If called with no arguments, return 0 (zero).
-
+  - Write a function called addList that accepts any quantity of numbers as arguments, adds them together and returns the resulting sum.
+  - Assume all parameters will be numbers.
+  - If called with no arguments, return 0 (zero).
 Examples:
-
-add(1) //=> 1
-add(1,50,1.23) //=> 52.23
-add(7,-12) //=> -5
+  add(1) //=> 1
+  add(1,50,1.23) //=> 52.23
+  add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
-/*-----------------------------------------------------------------
-Challenge: 05-computeRemainder
 
+// MY NOTE: 2 options that I can tell to get unknown number of parameters: "arguments" and "..." rest delimiter.
+function addList() {
+  return Array.from(arguments).reduce((a,b) => a + b, 0);
+}
+
+// ---- OPTION 2: Spread Operator -----
+// function addList(...anyParams) {
+//   return anyParams.reduce((a,b) => a + b, 0);
+// }
+
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 05-computeRemainder
 Difficulty: Basic
-
 Prompt:
-
-- Write a function named computeRemainder that accepts two numeric arguments and returns the remainder of the division of those two numbers.
-- The first argument should be the dividend and the second argument should be the divisor.
-- If a 0 is passed in as the second argument you should return JavaScript's special numeric value: Infinity.
-- For extra fun, complete this challenge without using the modulus (%) operator.
-
+  - Write a function named computeRemainder that accepts two numeric arguments and returns the remainder of the division of those two numbers.
+  - The first argument should be the dividend and the second argument should be the divisor.
+  - If a 0 is passed in as the second argument you should return JavaScript's special numeric value: Infinity.
+  - For extra fun, complete this challenge without using the modulus (%) operator.
 Examples:
-
-computeRemainder(10,2) //=> 0
-computeRemainder(4,0) //=> Infinity
-computeRemainder(10.5, 3) //=> 1.5
+  computeRemainder(10,2) //=> 0
+  computeRemainder(4,0) //=> Infinity
+  computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
-/*-----------------------------------------------------------------
-Challenge: 06-range
 
+// MY NOTES: Single line solution: Return the Modulo--
+function computeRemainder(n1, n2) {
+  return n2 !== 0 ? n1 % n2 : Infinity;
+}
+
+ // OR, FOR EXTRA FUN:
+// function computeRemainder(n1, n2) {
+//   if (n2 === 0) return Infinity;
+//   else {
+//     let d = n1 / n2;
+//     return (d - Math.floor(d)) * n2;
+//   }
+// }
+// console.log(computeRemainder(10.5,3));
+
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 06-range
 Difficulty: basic
-
 Prompt:
-
-- Write a function called range that accepts two integers as arguments and returns an array of integers starting with the first argument up to one less than the second argument.
-- The range function must be called with the first argument less than or equal to the second argument, otherwise return the string "First argument must be less than second".
-
+  - Write a function called range that accepts two integers as arguments and returns an array of integers starting with the first argument up to one less than the second argument.
+  - The range function must be called with the first argument less than or equal to the second argument, otherwise return the string "First argument must be less than second".
 Examples:
-
-range(1,4) //=> [1,2,3]
-range(-2, 3) //=> [-2,-1,0,1,2]
-range(1,1) //=> []
-range(5,2) //=> "First argument must be less than second"
+  range(1,4) //=> [1,2,3]
+  range(-2, 3) //=> [-2,-1,0,1,2]
+  range(1,1) //=> []
+  range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
-function range(n1, n2) {}
-/*-----------------------------------------------------------------
-Challenge: 07-reverseUpcaseString
+function range(n1, n2) {
+  if (n1>n2) return "First argument must be less than second";
+  else {
+    const arr = [];
+    for (i=n1; i<n2; i++) {
+      arr.push(i);
+    }
+    return arr;
+  } 
+}
+// console.log(range(-2,3));
+// console.log(range(1,1));
+// console.log(range(10,1));
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 07-reverseUpcaseString
 Difficulty: Basic
-
 Prompt:
-
-- Write a function called reverseUpcaseString that accepts a single string argument, then returns the string with its characters in reverse order and converts all characters to uppercase.
-
+  - Write a function called reverseUpcaseString that accepts a single string argument, then returns the string with its characters in reverse order and converts all characters to uppercase.
 Examples:
-
-reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
+  reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
-/*-----------------------------------------------------------------
-Challenge: 08-removeEnds
+function reverseUpcaseString(string) {
+  return strArr = string.toUpperCase().split("").reverse().join("");
+}
+// console.log(reverseUpcaseString("What a mess...!"));
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 08-removeEnds
 Difficulty: Basic
-
 Prompt:
-
-- Write a function called removeEnds that accepts a single string argument, then returns the a string with the first and last characters removed.
-- If the length of the string argument is less than 3, return an empty string.
-
+  - Write a function called removeEnds that accepts a single string argument, then returns the a string with the first and last characters removed.
+  - If the length of the string argument is less than 3, return an empty string.
 Examples:
-
-removeEnds('SEI Rocks!'); //=> "DI Rocks"
-removeEnds('a'); //=> "" (empty string)
+  removeEnds('SEI Rocks!'); //=> "DI Rocks"
+  removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
-/*-----------------------------------------------------------------
-Challenge: 09-charCount
+function removeEnds(string) {
+  return string.length < 3 ? "" : string.split("").slice(1,string.length-1).join("");
+}
+// console.log(removeEnds("This story!"));
+// console.log(removeEnds("The"));
+// console.log(removeEnds("Th"));
 
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 09-charCount
 Difficulty: Basic
-
 Prompt:
-
-- Write a function named charCount that accepts a single string argument and returns an object that represents the count of each character in the string.
-- The returned object should have keys that represent the character with its value set to the how many times the character appears in the string argument.
-- Upper and lower case characters should be counted separately.
-- Space characters should be counted too.
-
+  - Write a function named charCount that accepts a single string argument and returns an object that represents the count of each character in the string.
+  - The returned object should have keys that represent the character with its value set to the how many times the character appears in the string argument.
+  - Upper and lower case characters should be counted separately.
+  - Space characters should be counted too.
 Examples:
-
-charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
-charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
+  charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
+  charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
-/*-----------------------------------------------------------------
-Challenge: 10-formatWithPadding
+function charCount(string) {
+  if (string === undefined) return {};
+  const charObj = {};
+  string.split("").forEach(e => {
+    if (!charObj[e]) charObj[e] = 1;
+    else charObj[e] += 1; 
+  })
+  return charObj;
 
+}
+// console.log(charCount("Hello"));
+// console.log(charCount("My name is Timothy!!"));
+// console.log(charCount());
+
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 10-formatWithPadding
 Difficulty: Basic
-
 Prompt:
-
-- Write a function called formatWithPadding that accepts three arguments:
-  - A numeric argument (an integer) representing the number to format.
-  - A string argument (a single character) representing the character used to "pad" the returned string to a minimum length.
-  - Another numeric argument (an integer) representing the length to "pad" the returned string to.
-- The function should return the integer as a string, "left padded" to the length of the 3rd arg using the character provided in the 2nd arg.
-- If the length of the integer converted to a string is equal or greater than the 3rd argument, no padding is needed - just return the integer as a string.
-
+  - Write a function called formatWithPadding that accepts three arguments:
+    - A numeric argument (an integer) representing the number to format.
+    - A string argument (a single character) representing the character used to "pad" the returned string to a minimum length.
+    - Another numeric argument (an integer) representing the length to "pad" the returned string to.
+  - The function should return the integer as a string, "left padded" to the length of the 3rd arg using the character provided in the 2nd arg.
+  - If the length of the integer converted to a string is equal or greater than the 3rd argument, no padding is needed - just return the integer as a string.
 Examples:
-
-formatWithPadding(123, '0', 5); //=> "00123"
-formatWithPadding(42, '*', 10); //=> "********42"
-formatWithPadding(1234, '*', 3); //=> "1234"
+  formatWithPadding(123, '0', 5); //=> "00123"
+  formatWithPadding(42, '*', 10); //=> "********42"
+  formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
-function formatWithPadding(n, char, length) {}
-/*-----------------------------------------------------------------
-Challenge: 11-isPalindrome
+function formatWithPadding(n, char, length) {
+  const nstr = n.toString();
+  if (nstr.length >= length) return nstr;
+  else {
+    let arr = nstr.split("");
+    for (i=0; i < length - nstr.length; i++) {
+      arr.unshift(char);
+    }
+    return arr.join("");
+  }
+}
+// console.log(formatWithPadding(123, '0', 5));
+// console.log(formatWithPadding(42, '*', 10));
+// console.log(formatWithPadding(1234, '*', 3));
+
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 11-isPalindrome
 
 Difficulty: Intermediate
 
@@ -218,9 +261,19 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
-/*-----------------------------------------------------------------
-Challenge: 12-hammingDistance
+function isPalindrome(string) {
+  const strArr = string.toLowerCase().split("").filter(e => e !== " ");
+  if (strArr.join("") == strArr.reverse().join("")) return true;
+  else return false;
+}
+//  console.log(isPalindrome("SEI Rocks"));
+//  console.log(isPalindrome("rotor"));
+//  console.log(isPalindrome(""));
+//  console.log(isPalindrome("A nut for a jar of tuna"));
+
+
+// -------------------------------------------------------------------------------------
+/*-- Challenge: 12-hammingDistance
 
 Difficulty: Intermediate
 
@@ -240,9 +293,21 @@ hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
-function hammingDistance(str1, str2) {}
-/*-----------------------------------------------------------------
-Challenge: 13-mumble
+function hammingDistance(str1, str2) {
+
+  let arr1 = str1.split(""), arr2 = str2.split("");
+  if(arr1.length == arr2.length) {
+    return arr1.reduce((a,b,i) => b === arr2[i] ? a : a+1, 0);
+  } else return NaN;
+}
+
+// console.log(hammingDistance("abc","abc"));
+// console.log(hammingDistance("a1c","a2c"));
+// console.log(hammingDistance("****","!!!!"));
+// console.log(hammingDistance("abc","ab"));
+
+
+/*--- Challenge: 13-mumble
 
 Difficulty: Intermediate
 
@@ -260,9 +325,18 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
-function mumble(string) {}
-/*-----------------------------------------------------------------
-Challenge: 14-fromPairs
+function mumble(string) {
+  let strArr2 = [];
+  string.split("").forEach((e, i) => {
+    for(n=0; n<=i; n++) n == 0 ? strArr2.push([e]) : strArr2[i].push(e);
+  });
+  return strArr2.map(e => e.join("")).join("-");
+}
+// console.log(mumble("!A 2"));
+
+
+// ----------------------------------------------------------------
+/*-- Challenge: 14-fromPairs
 
 Difficulty: Intermediate
 
@@ -273,14 +347,19 @@ Prompt:
 - If a key appears in multiple pairs, the rightmost pair should overwrite the previous entry in the object.
 
 Examples:
-
-fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
-fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
+// fromPairs([ ['a', 1], ['b', 2], ['c', 3] ]) //=> { a: 1, b: 2, c: 3 }
+// fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sally", age: 24 }
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
-function fromPairs(arr) {}
-/*-----------------------------------------------------------------
-Challenge: 15-mergeObjects
+function fromPairs(arr) {
+  let obj={};
+  arr.forEach(e => obj[e[0]] = e[1]); 
+  return obj;
+}
+
+
+// ----------------------------------------------------------------
+/*-- Challenge: 15-mergeObjects
 
 Difficulty:  Intermediate
 
@@ -296,9 +375,23 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-function mergeObjects(obj1, obj2) {}
-/*-----------------------------------------------------------------
-Challenge: 16-findHighestPriced
+function mergeObjects(obj1, ...rest) {
+  newObj = obj1;
+  
+  for (let h=0; h < rest.length; h++) {
+    obj2 = rest[h];
+    obj2keys = Object.keys(obj2);
+
+    for (let i=0; i < obj2keys.length; i++) {
+      newObj[obj2keys[i]] = obj2[obj2keys[i]];
+    }
+  }
+return newObj;
+}
+// console.log(mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44}));
+
+// ----------------------------------------------------------------
+/*---- Challenge: 16-findHighestPriced
 
 Difficulty:  Intermediate  
 
@@ -330,9 +423,33 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-function findHighestPriced(arr) {}
-/*-----------------------------------------------------------------
-Challenge: 17-mapArray
+
+//MY NOTES: THIS ONE WORKS, BUT IT MUTATES THE ARRAY VIA "SORT"
+// function findHighestPriced(arr) {
+//   return arr.sort((a,b) => b.price - a.price)[0];
+// }
+
+// VERSION 2: ITERATIVE METHOD
+function findHighestPriced(arr) {
+
+  let maxIndex=0;
+
+  if (arr.length===1) return arr[0];
+  else for(let i=1; i<arr.length; i++) {
+    if (arr[i].price > arr[i-1].price) maxIndex = i;
+  }
+  return arr[maxIndex];
+}
+// console.log(findHighestPriced([
+//   { sku: 'a1', price: 25 },
+//   { sku: 'b2', price: 50 },
+//   { sku: 'c3', price: 50 },
+//   { sku: 'd4', price: 10 }
+// ])
+// );
+
+//-----------------------------------------------------------------
+/*-- Challenge: 17-mapArray
 
 Difficulty:  Intermediate
 
@@ -357,9 +474,17 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-function mapArray(arr, cb) {}
-/*-----------------------------------------------------------------
-Challenge: 18-reduceArray
+function mapArray(arr, cb) {
+
+  let newArr=[];
+  for(let i=0; i < arr.length; i++) {
+    newArr.push(cb(arr[i], i));
+  }
+  return(newArr);
+}
+
+//-----------------------------------------------------------------
+/*-- Challenge: 18-reduceArray
 
 Difficulty:  Intermediate
 
@@ -391,12 +516,22 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
-/*-----------------------------------------------------------------
-Challenge: 19-flatten
+function reduceArray(arr, cb, value) {
+
+  let result;
+
+  for (let i=0; i<arr.length; i++) {
+    if (i==0) result = cb(value, arr[i], i);
+    else result = cb(result,arr[i],i);
+  }
+return result;
+}
+
+
+//-----------------------------------------------------------------
+/*-- Challenge: 19-flatten
 
 Difficulty:  Intermediate
-
 Prompt:
 
 - Write a function named flatten that accepts a single array that may contain nested arrays and returns a new "flattened" array.
@@ -418,10 +553,33 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-function flatten(arr) {}
-/*-----------------------------------------------------------------
-Challenge: 20-isPrime
 
+
+// -- INNER FUNCTION VERSION: --
+function flatten(initArr) { 
+  workingArr=[];
+  const inner = (arr) => {
+    for (let i=0; i < arr.length; i++) {
+      Array.isArray(arr[i]) ? inner(arr[i]) : workingArr.push(arr[i]);
+    }
+  }
+  inner(initArr);
+  return workingArr;
+}
+
+function flatten_recursive(arr) {
+  // use reduce() and concat(), each val concat to next val, check if it's an array, if so run function again, if 
+}
+
+// -- CREATIVE JOIN/SPLIT STRING VERSION: --
+function flatten2(arr) {
+  console.log("hi");
+  return arr.join(',').split(',').map(a => Number.isNaN(parseInt(a)) ? a : parseInt(a));
+}
+
+
+//-----------------------------------------------------------------
+/*-- Challenge: 20-isPrime
 Difficulty: Intermediate
 
 Prompt:
@@ -438,9 +596,17 @@ isPrime(29) //=> true
 isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
-function isPrime(n) {}
-/*-----------------------------------------------------------------
-Challenge: 21-primeFactors
+function isPrime(n) {
+  if (!Number.isInteger(n) || n<=1) return false;
+  for (let i=2; i < n; i++) {
+    if (!(n%i)) return false;
+  } 
+  return true;
+}
+
+
+// ----------------------------------------------------------------
+/*-- Challenge: 21-primeFactors
 
 Difficulty: Intermediate
 
@@ -462,9 +628,38 @@ primeFactors(105) //=> [3, 5, 7]
 primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
-function primeFactors(n) {}
-/*-----------------------------------------------------------------
-Challenge: 22-intersection
+function primeFactors(n) {
+  factArr = [];
+  
+  const helper = (current) => {
+    if (isPrime(current)) factArr.push(current);
+    else {
+      for (i=2;i<current; i++) {
+        if (current%i===0) {
+          factArr.push(i)
+          // console.log("helper push:" , i)
+          return helper(current/i)
+        }
+      }
+    }
+  }
+
+  if (n>1 && Number.isInteger(n)) {
+    helper(n);
+  }
+  return factArr;
+}
+
+// console.log(primeFactors(2));
+// console.log(primeFactors(3));
+// console.log(primeFactors(4));
+// console.log(primeFactors(18));
+// console.log(primeFactors(29));
+// console.log(primeFactors(105));
+// console.log(primeFactors(200));
+
+//-----------------------------------------------------------------
+/*-- Challenge: 22-intersection
 
 Difficulty: Intermediate
 
@@ -483,9 +678,30 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-function intersection(arr1, arr2) {}
-/*-----------------------------------------------------------------
-Challenge: 23-balancedBrackets
+function intersection(arr1, arr2) {
+  newArr = [];
+
+  const helper = (arrA, arrB) => {
+    arrA.forEach((a,i) => {
+      if (arrB.includes(a)) { 
+        newArr.push(a);
+        // console.log("push",a)
+      }
+    })
+  }
+  if (arr1.length && arr2.length) {
+    arr1.length > arr2.length ? helper(arr2, arr1) : helper(arr1, arr2);
+  }
+
+  return newArr;
+}
+// console.log(intersection(['a', 1], []) ) //=> []
+// console.log(intersection(['a', 1], [true, 'a', 15]) ) //=> ['a']
+// console.log( intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) )//=> [1, true, 1]
+
+
+//-----------------------------------------------------------------
+/*-- Challenge: 23-balancedBrackets
 
 Difficulty:  Intermediate
 
@@ -505,9 +721,38 @@ balancedBrackets( '[(])' ) // => false
 balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
-function balancedBrackets(string) {}
-/*-----------------------------------------------------------------
-Challenge: 24-isWinningTicket
+function balancedBrackets(string) {
+
+  let arr = string.split('');
+  let check = [];
+  if (!arr.length) return false;
+  else {
+    for (let i=0; i<arr.length; i++) {
+      if (arr[i]==='(' || arr[i]==='[' || arr[i]==='{') {
+        check.push(arr[i]);
+      }
+      else if (
+        (arr[i]===')' && check[check.length-1]==='(')
+        || (arr[i]===']' && check[check.length-1]==='[')
+        || (arr[i]==='}' && check[check.length-1]==='{')
+      ) {
+        check.pop();
+      }
+    }
+    return !check.length ? true : false;
+  }
+}
+
+// console.log(balancedBrackets( '()' )) // => true
+// console.log(balancedBrackets( '(]' ) )// => false
+// console.log(balancedBrackets( '[{}]' )) // => true
+// console.log(balancedBrackets( '[(])' ) )// => false
+// console.log(balancedBrackets( '[({}[])]' )) // => true
+
+
+
+//-----------------------------------------------------------------
+/*-- Challenge: 24-isWinningTicket
 
 Difficulty:  Intermediate
 
@@ -531,9 +776,28 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-function isWinningTicket(arr) {}
-/*-----------------------------------------------------------------
-Challenge: 25-getNumForIP
+function isWinningTicket(arr) {
+  let check = arr.filter((a,index) => {
+    for (let i=0; i<a[0].length; i++) {
+      // console.log(index,",", a[0].split('')[i], "=", a[0].charCodeAt(i))
+      if (a[0].charCodeAt(i) == parseInt(a[1])) {
+        return true;
+      }
+    }
+    return false;
+  })
+  return arr.length == check.length ? true : false;
+}
+
+// console.log(isWinningTicket( [ ['ABC', 65] ] )) // => true
+// console.log(isWinningTicket( [ ['ABC', 999], ['XY', 89] ] )) // => false
+// console.log(isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] )) // => true
+// console.log(isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] )) // => false
+
+
+
+// -----------------------------------------------------------------
+/* Challenge: 25-getNumForIP
 
 Difficulty:  Intermediate
 
@@ -546,7 +810,7 @@ Prompt:
 Hints:
 
 - Each 8-bit number can hold a value between 0 and 256.
-- An IP's right most 8-bit number represents how many of 256 raised to the power of 0 (equals 1) there are.  The next 8-bit number represents how many of 256 raised to the power of 1 (256) there are, etc.  For example, if you took the right-most two 8-bit numbers of the IP address 192.156.99.15, you would have 15 * (256 ** 0), which equals 15, and 99 * (256**1), which equals 25344.
+- An IP's right most 8-bit number represents how many of 256 raised to the power of 0 (equals 1) there are.  The next 8-bit number represents how many of 256 raised to the power of 1 (256) there are, etc.  For example, if you took the right-most two 8-bit numbers of the IP address 192.156.99.15, you would have 15 * (256 ** 0), which equals 15, and 99 * (256**1), which equals 25344. 15 + 25344 = 25359
 - To compute the numeric value for an IP address, you first compute the value for each of the four 8-bit chunks (as described in the above hint), and add them together!
 
 Examples:
@@ -557,9 +821,19 @@ getNumForIP( '192.156.99.15' ) // => 3231474447
 getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
-function getNumForIP(bits) {}
-/*-----------------------------------------------------------------
-Challenge: 26-toCamelCase
+function getNumForIP(bits) {
+  return bits.split(".").reverse()
+    .reduce((a,b,i) => parseInt(a) + parseInt(b)*(256**i)
+    )
+}
+// console.log(getNumForIP("0.0.0.1"))
+// console.log(getNumForIP("0.0.2.0"))
+// console.log(getNumForIP("192.156.99.15"))
+// console.log(getNumForIP("10.0.0.1"))
+
+
+//--------------------------------------------------------------------
+/* Challenge: 26-toCamelCase
 
 Difficulty:  Intermediate
 
@@ -582,9 +856,18 @@ toCamelCase( 'Mama-mia' ) // => 'MamaMia'
 toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
-function toCamelCase(string) {}
-/*-----------------------------------------------------------------
-Challenge: 27-countTheBits
+function toCamelCase(string) {
+  let arr = string.includes("-") ? string.split("-") : string.split("_")
+  // newStr = arr.join("")
+  let arr2 = arr.map((a, i) => i===0 ? a : a.charAt(0).toUpperCase() + a.slice(1)).join("")
+  return arr2
+}
+
+// console.log("check",toCamelCase("sei-rocks-too"))
+
+
+//-----------------------------------------------------------------
+/* -- Challenge: 27-countTheBits
 
 Difficulty:  Intermediate
 
@@ -608,7 +891,11 @@ countTheBits( 255 ) //=> 8
 countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
-function countTheBits(n) {}
+function countTheBits(n) {
+  return n.toString(2).split("").reduce((a,b)=> parseInt(a)+parseInt(b),0)
+}
+// console.log(countTheBits(255))
+
 /*-----------------------------------------------------------------
 Challenge: 28-gridTrip
 
@@ -632,9 +919,27 @@ gridTrip( [5, 10], 'D5L15U2' ) //-> [2, -5]
 gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
-function gridTrip(arr, string) {}
-/*-----------------------------------------------------------------
-Challenge: 29-addChecker
+function gridTrip(arr, string) {
+  let moves = string.match(/\D\d*/g).map(a => [a.charAt(0), a.slice(1)])
+  let grid = [arr[0],arr[1]]
+  for (i=0; i<moves.length; i++) {
+    if (moves[i][0] == "U") grid[0] += parseInt(moves[i][1])
+    else if (moves[i][0] == "D") grid[0] -= parseInt(moves[i][1])
+    else if (moves[i][0] == "R") grid[1] += parseInt(moves[i][1])
+    else if (moves[i][0] == "L") grid[1] -= parseInt(moves[i][1])
+  }
+  return grid
+}
+
+// console.log(
+//   gridTrip( [0, 0], 'U2R1' ), 
+//   gridTrip( [5, 10], 'D5L15U2' ),
+//   gridTrip( [-22, 100], 'L2L15D50U1D9') 
+// )
+
+
+//-----------------------------------------------------------------
+/* -- Challenge: 29-addChecker
 
 Difficulty:  Intermediate
 
@@ -658,9 +963,20 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
-/*-----------------------------------------------------------------
-Challenge: 30-totalTaskTime
+function addChecker(arr, n) {
+  for (i=0; i<arr.length; i++) {                        // THIS COULD BE MORE ELEGANT
+    for (j=1; j<arr.length; j++) {
+      if (arr[i] + arr[j] === n) return true 
+    }
+  }
+  return false
+}
+// console.log(addChecker([10, 15, 16, 22], 32))
+
+
+
+// -----------------------------------------
+/*-- Challenge: 30-totalTaskTime
 
 Difficulty:  Difficult
 
@@ -686,7 +1002,29 @@ totalTaskTime( [2, 2, 3, 3, 4, 4], 2 ) //=> 9
 totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
-function totalTaskTime(arr, n) {}
+function totalTaskTime(arr, n) {
+  if (!arr.length || !n) return 0
+  else {
+    // if (n == arr.length) return arr.sort()[arr.length-1]
+
+    let tracker = arr.slice(0,n)
+    for (i=n; i<=arr.length; i++) {
+      tracker.sort((a,b)=>a-b)
+      if (i===arr.length) return tracker[tracker.length-1]
+      else {
+        tracker[0] += arr[i]
+      }
+    }
+  } 
+}
+
+// console.log(totalTaskTime( [], 1 )) // => 0
+// console.log(totalTaskTime( [4, 2, 5], 1 )) // => 11
+// console.log(totalTaskTime( [5, 8], 2 )) // => 8
+// console.log(totalTaskTime( [4, 2, 10], 2 )) // => 12
+// console.log(totalTaskTime( [2, 2, 3, 3, 4, 4], 2 )) //=> 9
+// console.log(totalTaskTime( [5, 2, 6, 8, 7, 2], 3 )) // => 12
+
 
 /*-----------------------------------------------------------------*/
 module.exports = {
