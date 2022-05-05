@@ -684,33 +684,41 @@ primeFactors(200) //=> [2, 2, 2, 5, 5]
 // Your solution for 21-primeFactors here:
 function primeFactors(n) {
   let reducerArray = []
-  const reduceFactors = (n) => {
-    for(let i = 2; i < 10; i++){
-      if (n % i === 0) {
-        for(let j = 2; j < 10; j++){
-          if(i % j === 0) {
-            reduceFactors(i)
-          } else {
-            reducerArray.push(i)
-          }
+  
+  const checkPrime = (n) => {
+    let primeIndicator = true
+    if (n === 1) {
+      primeIndicator = false
+    } else if (Number.isInteger(n) !== true) {
+      primeIndicator = false
+    } else {
+      for (let i = 2; i < 10; i++){
+        if (n % i === 0 && i !== n) {
+          primeIndicator = false
         }
       }
-    }     
-  }
-  if (n <= 1) {
-    return []
-  } else if (!Number.isInteger(n)) {
-    return []
-  } else {
-    for (let i = 2; i < 10; i++){
-      if (n % i === 0 && i !== n) {
-        reduceFactors(n)
-        return reducerArray
-
-      } else {
-        return [n]
-      }
     }
+    return primeIndicator  
+  }
+
+    if (n <= 1) {
+      return []
+    } else if (!Number.isInteger(n)) {
+      return []
+    } else {
+      // insipiration / direction for this while codeblock takne from solutions.js:
+      let prime = 2
+      while(!checkPrime(n)) {
+        if (Number.isInteger(n / prime)) {
+          reducerArray.push(prime)
+          n = n / prime
+        } else {
+          prime++
+          while(!checkPrime(prime)) prime++
+        }
+    }
+      reducerArray.push(n)
+      return reducerArray
   }
 }
 /*-----------------------------------------------------------------
@@ -781,7 +789,19 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-function isWinningTicket(arr) {}
+function isWinningTicket(arr) {
+  let isWinning = true
+  for(let i = 0; i < arr.length; i++){
+    let chars = arr[i][0]
+    let charCode = arr[i][1]
+    console.log(chars, String.fromCharCode(charCode))
+    if(!chars.includes(String.fromCharCode(charCode))){
+      isWinning = false
+      break
+    }
+  }
+  return isWinning
+}
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
 
@@ -832,7 +852,21 @@ toCamelCase( 'Mama-mia' ) // => 'MamaMia'
 toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
-function toCamelCase(string) {}
+function toCamelCase(string) {
+  let camelCase = string[0]
+  for(let i = 1; i < string.length; i++){
+    let lastChar = string[i-1]
+    let char = string[i]
+    if(lastChar === '-' || lastChar === '_'){
+      camelCase = camelCase.concat(char.toUpperCase()) 
+    } else {
+      camelCase = camelCase.concat(char)
+    }
+  }
+  camelCase = camelCase.replaceAll('_', '')
+  camelCase = camelCase.replaceAll('-', '')
+  return camelCase
+}
 /*-----------------------------------------------------------------
 Challenge: 27-countTheBits
 
