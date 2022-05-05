@@ -631,7 +631,25 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-function intersection(arr1, arr2) {}
+function intersection(arr1, arr2) {
+  let newArr = []
+  if(arr1.length<arr2.length){
+    for(let i=0; i<arr2.length; i++){
+      if(arr1[i] === arr2[i])
+      newArr.push(arr1[i], arr2[i])
+    }
+    return newArr
+  }else if(arr1.length>arr2.length){
+    for(let x=0; x<arr1.length; x++){
+      if(arr1[x] === arr2[x]){
+        newArr.push(arr1[x], arr2[x])
+      }
+      return newArr
+    }
+  }else{
+    return newArr
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 23-balancedBrackets
 
@@ -696,7 +714,13 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-function isWinningTicket(arr) {}
+function isWinningTicket(arr) {
+  arr.forEach((ar) => {
+    if(ar[0].includes(ar[1])){
+      return true
+    }
+  })
+}
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
 
