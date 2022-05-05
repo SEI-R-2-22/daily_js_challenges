@@ -310,7 +310,6 @@ function isPalindrome(string) {
     return true
   }
 }
-isPalindrome('A nut for a jar of tuna')
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -731,38 +730,30 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 function isWinningTicket(arr) {
-  let lottery = true
-  for(let i = 0; i < arr.length; i++){
-      let charFromNumber = String.fromCharCode(arr[i][1])
-      if(!arr[i][0].includes(charFromNumber)){
-        lottery = false
-        break
+    let lottery = 0
+
+    if(arr.length == 1){
+      for(let i = 0; i < arr[0].length; i++){
+        if(arr[0][0].charCodeAt(i) == arr[0][1]){
+          lottery++
+        }
       }
-  }
-  return lottery
-  //   if(arr.length == 1){
-  //     for(let i = 0; i < arr[0].length; i++){
-  //       if(arr[0].charCodeAt(i) == arr[1]){
-  //         lottery++
-  //       }
-  //     }
-  //   }else{
-  //       for(let j = 0; j < arr[i][0].length; j++){
-  //         if(arr[i][0].charCodeAt(j) == arr[i][1]){
-  //           lottery++
-  //           break
-  //         }
-  //       }
+    }else{
+        for(let i = 0; i < arr.length; i++){
+            for(let j = 0; j < arr[i][0].length; j++){
+                if(arr[i][0].charCodeAt(j) == arr[i][1]){
+                    lottery++
+                    break
+                }
+            }
+        }
+    }
 
-  //   }
-  // }
-  // console.log(lottery)
-
-  // if(lottery === arr.length){
-  //   return true
-  // }else{
-  //   return false
-  // }
+    if(lottery === arr.length){
+        return true
+    }else{
+        return false
+    }
 }
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
