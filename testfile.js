@@ -198,13 +198,58 @@ function countTheBits(n) {
   }
   return count
 }
+function intersection(arr1, arr2) {
+  let x = []
+  for (let i = 0; i <arr1.length;i++){
+    // console.log(`i = ${i} value = ${arr1[i]} array 2:${arr2}`)
+
+    if(arr2.includes(arr1[i])){
+      x.push(arr1[i])
+      // console.log(arr2)
+      let t = arr2.find((x)=>x===arr1[i])
+       arr2.splice(t,1)
+      // console.log(arr2)
+      // console.log('pushed')
+    }
+
+    // for(let n = 0; n< arr2.length;n++){
+    //   if(arr1[i] === arr2[n]){
+    //     x.push(arr1[i])
+    //     console.log(`i = ${i} value = ${arr1[i]} \nn = ${n} value = ${arr2[n]}`)
+    //   }
+    // }
+  }
+  return x
+}
+
+function flatten(arr) {
+  let x = []
+  for (i =0;i<arr.length;i++){
+    for(n=0;n<arr[i].length;n++){
+      x.push(arr[i][n])
+    }
+    // console.log(`arr[${i}] = ${arr[i]}`)
+
+  }
+  return x
+}
+
+
 
 //console.log(formatWithPadding(123,"x",4));
 //ME
 // console.log(reduceArray( [1, 2, 3], function(acc, n, i) {
 //   return acc + n + i;
-// }, 0))
-console.log(countTheBits(2))
-console.log(countTheBits(3))
-console.log(countTheBits(29))
-console.log(countTheBits(65535))
+// // }, 0))
+// console.log(countTheBits(2))
+// console.log(countTheBits(3))
+// console.log(countTheBits(29))
+// console.log(countTheBits(65535))
+
+// console.log(intersection([1], [2]))
+// console.log(intersection(['a', 1], []))
+// console.log(intersection(['a', 1], [true, 'a', 15]))
+// console.log(intersection(['1', 'a', true, 1, 1], [true, 1, 'b', 1]))
+// console.log(intersection())
+
+console.log(flatten([1, [2, [3, [4]]], 1, 'a', ['b', 'c']]))

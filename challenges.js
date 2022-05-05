@@ -574,7 +574,9 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-function flatten(arr) {}
+function flatten(arr) {
+  return arr.flat(Infinity)
+}
 /*-----------------------------------------------------------------
 Challenge: 20-isPrime
 
@@ -657,7 +659,29 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-function intersection(arr1, arr2) {}
+function intersection(arr1, arr2) {
+  let x = []
+  for (let i = 0; i <arr1.length;i++){
+    // console.log(`i = ${i} value = ${arr1[i]} array 2:${arr2}`)
+
+    if(arr2.includes(arr1[i])){
+      x.push(arr1[i])
+      // console.log(arr2)
+      let t = arr2.find((x)=>x===arr1[i])
+       arr2.splice(t,1)
+      // console.log(arr2)
+      // console.log('pushed')
+    }
+
+    // for(let n = 0; n< arr2.length;n++){
+    //   if(arr1[i] === arr2[n]){
+    //     x.push(arr1[i])
+    //     console.log(`i = ${i} value = ${arr1[i]} \nn = ${n} value = ${arr2[n]}`)
+    //   }
+    // }
+  }
+  return x
+}
 /*-----------------------------------------------------------------
 Challenge: 23-balancedBrackets
 
@@ -759,7 +783,6 @@ toCamelCase( 'A_b_c' ) // => 'ABC'
 function toCamelCase(string) {
   let n = string//.split('')
   let x = n.split('')
-
   // let toSpice=[]
   // // console.log(n.length)
   // for(let i=1;i<n.length;i++){
@@ -772,13 +795,13 @@ function toCamelCase(string) {
   while(n.indexOf('_')>=0){
     x[n.indexOf('_')+1] = n[n.indexOf('_')+1].toUpperCase()
     x.splice(n.indexOf('_'),1)
-    // console.log(n)
     n = x.join('')
   }
+
+
   while(n.indexOf('-')>=0){
     x[n.indexOf('-')+1] = n[n.indexOf('-')+1].toUpperCase()
     x.splice(n.indexOf('-'),1)
-    // console.log(n)
     n = x.join('')
   }
   
