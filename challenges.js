@@ -12,7 +12,10 @@ Examples:
 sayHello() //=> Hello!
 -----------------------------------------------------------------*/
 // Your solution for 00-sayHello (example) here:
-function sayHello() {}
+function sayHello() {
+  const hello = 'Hello!'
+  return hello
+}
 /*-----------------------------------------------------------------
 Challenge: 01-addOne
 
@@ -28,7 +31,9 @@ addOne(1) //=> 2
 addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
-function addOne(num) {}
+function addOne(num) {
+  return num++
+}
 /*-----------------------------------------------------------------
 Challenge: 02-addTwoNumbers
 
@@ -47,7 +52,13 @@ addTwoNumbers(0, 0) //=> 0
 addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
-function addTwoNumbers(num1, num2) {}
+function addTwoNumbers(num1, num2) {
+  if (typeof num1 === 'number' && typeof num2 === 'number') {
+    return num1 + num2
+  } else {
+    return NaN
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
 
@@ -66,7 +77,14 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-function sumNumbers(nums) {}
+function sumNumbers(nums) {
+  let arr = [1, 2, 3]
+  if (arr === 'number') {
+    return arr.reduce((array, a) => array + a, 0)
+  } else if (arr === null) {
+    return 0
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 04-addList
 
@@ -85,7 +103,13 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
-function addList() {}
+function addList(a, b) {
+  if ((a, b)) {
+    return a + b
+  } else {
+    return 0
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
 
@@ -105,7 +129,13 @@ computeRemainder(4,0) //=> Infinity
 computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
-function computeRemainder(n1, n2) {}
+function computeRemainder(n1, n2) {
+  let result = n1 % n2
+  if (n2 === 0) {
+    result = Infinity
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 06-range
 
@@ -134,12 +164,35 @@ Prompt:
 
 - Write a function called reverseUpcaseString that accepts a single string argument, then returns the string with its characters in reverse order and converts all characters to uppercase.
 
+1. Verify Constraints
+- What should be returned if string is empty?
+- Are there any special characters or spaces in the string, or just letters?
+
+2. Write out Edge cases
+"colonel" "asdf;lkj" "AppleTree" "General assembly"
+
+3. Figure out solution without code - Brute force solution
+4. Code out solution
+5. Optimize solution - Big O tradeoffs, error handling...
+6. Walkthrough solution and implement solution
+7. Test solution with edge cases
+
+
 Examples:
 
 reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES" 
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(string) {}
+function reverseUpcaseString(string) {
+  // let regexString = string.replace(/[^A-Za-z0-9]/g, '').toUpperCase() - Assuming all strings have no special characters, spaces or alphanumeric characters
+  let str = string.toUpperCase()
+
+  if (str === '') {
+    return ''
+  } else {
+    return reverseUpcaseString(str.substring(1)) + str.charAt(0)
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 08-removeEnds
 
@@ -154,9 +207,27 @@ Examples:
 
 removeEnds('SEI Rocks!'); //=> "DI Rocks"
 removeEnds('a'); //=> "" (empty string)
+1. Verify Constraints
+
+
+2. Write out Edge cases
+"boy" "abcdefg" "chameleoN" "" "abc" "a"
+
+3. Figure out solution without code - Brute force solution
+4. Code out solution
+5. Optimize solution - Big O tradeoffs, error handling...
+6. Walkthrough solution and implement solution
+7. Test solution with edge cases
+
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
-function removeEnds(string) {}
+function removeEnds(string) {
+  if (string.length < 3) {
+    return ''
+  } else {
+    return removeEnds(string.substring(1, string.length - 1))
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 09-charCount
 
@@ -165,17 +236,43 @@ Difficulty: Basic
 Prompt:
 
 - Write a function named charCount that accepts a single string argument and returns an object that represents the count of each character in the string.
+
+1. Verify Constraints
 - The returned object should have keys that represent the character with its value set to the how many times the character appears in the string argument.
 - Upper and lower case characters should be counted separately.
 - Space characters should be counted too.
 
+2. Write out Edge cases
 Examples:
 
 charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
+
+3. Figure out solution without code - Brute force solution
+4. Code out solution
+5. Optimize solution - Big O tradeoffs, error handling...
+6. Walkthrough solution and implement solution
+7. Test solution with edge cases
+
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-function charCount(string) {}
+function charCount(string) {
+  string.split('')
+  let character = {}
+  count = 0
+  let map = new Map()
+
+  for (let i = 0; i < string.length; i++) {
+    let item = string[i]
+    if (map.has(item)) {
+      if (item === '') {
+        count++
+        character = { item: count }
+      } else if (item === item.toUpperCase) {
+      }
+    }
+  }
+}
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
 
@@ -207,18 +304,52 @@ Prompt:
 
 - Write a function called isPalindrome that accepts a single string argument, then returns true or false depending upon whether or not the string is a palindrome.
 - A palindrome is a word or phrase that is the same forward or backward.
+
+
+
+
+1. Verify Constraints
 - Casing and spaces are not included when considering whether or not a string is a palindrome.
 - If the length of the string is 0 or 1, return true.
 
+2. Write out Edge cases
 Examples:
 
 isPalindrome('SEI Rocks'); //=> false
 isPalindrome('rotor'); //=> true
 isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
+
+3. Figure out solution without code - Brute force solution
+4. Code out solution
+5. Optimize solution - Big O tradeoffs, error handling...
+6. Walkthrough solution and implement solution
+7. Test solution with edge cases
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-function isPalindrome(string) {}
+function isPalindrome(string) {
+  //Brute force
+
+  // string = string.replace(/[A-Za-z0-9]/g, '') //Edgecase: 'rotor'
+  // let palindrome = true
+  // let p1 = 0 //p1 is at string[0] => value = r
+  // let p2 = string.length - 1 //p2 is at string[4] => value = r
+  // while (p1 <= p2) {
+  //   // 0 is less than 4, run the next line, else skip if statement and run "else". Continue to loop until p1 < p2, then break loop and return palindrome
+  //   if (string[p1] === string[p2]) {
+  //     p1++
+  //     p2--
+  //   } else {
+  //     palindrome = false
+  //     break
+  //   }
+  // }
+  // return palindrome
+
+  //Optimized
+
+  return string == string.split('').reverse().join('')
+}
 /*-----------------------------------------------------------------
 Challenge: 12-hammingDistance
 
@@ -238,6 +369,16 @@ hammingDistance('abc', 'abc'); //=> 0
 hammingDistance('a1c', 'a2c'); //=> 1
 hammingDistance('!!!!', '****'); //=> 4
 hammingDistance('abc', 'ab'); //=> NaN
+
+1. Verify Constraints
+
+2. Write out Edge cases
+
+3. Figure out solution without code - Brute force solution
+4. Code out solution
+5. Optimize solution - Big O tradeoffs, error handling...
+6. Walkthrough solution and implement solution
+7. Test solution with edge cases
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 function hammingDistance(str1, str2) {}
