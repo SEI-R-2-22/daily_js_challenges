@@ -222,12 +222,13 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 // Your solution for 09-charCount here:
 function charCount(string) {
   let result = {}
-  for (var i = 0; i < string.length; i++) {
-    let letter = string.charAt(i)
-    if (result[letter]) {
-      result[letter]++
+  for (let i = 0; i < string.length; i++) {
+    let character = string.charAt(i)
+    // already seen this char?
+    if (result[character]) {
+      result[character]++
     } else {
-      result[letter]
+      result[character] = 1
     }
   }
   return result
@@ -636,7 +637,7 @@ intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 function intersection(arr1, arr2) {
   let result = []
   // create copy of 2nd array for purpose of handling duplicates
-  let arrayTwo = [...a2]
+  let arrayTwo = [...arr2]
   arr1.forEach((value) => {
     let i = arrayTwo.indexOf(value)
     if (i > -1) result.push(arrayTwo.splice(i, 1)[0])
@@ -804,7 +805,12 @@ countTheBits( 255 ) //=> 8
 countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
-function countTheBits(n) {}
+function countTheBits(integer) {
+  return integer
+    .toString(2)
+    .split('')
+    .filter((bit) => bit === '1').length
+}
 /*-----------------------------------------------------------------
 Challenge: 28-gridTrip
 
@@ -828,7 +834,25 @@ gridTrip( [5, 10], 'D5L15U2' ) //-> [2, -5]
 gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
-function gridTrip(arr, string) {}
+function gridTrip(arr, string) {
+  //result with starting positions
+  let result = [arr[0], arr[1]]
+  //lookup object for result arr index and multiplier for each char
+  const lookup = { U: [0, 1], R: [1, 1], D: [0, -1], L: [1, -1] }
+  let i = 0
+  while (i < string.length) {
+    //first char of the move string is the direction to be used to access the lookup object
+    let dir = string[i]
+    i++
+    let numString = ''
+    while ('0123456789'.includes(string[i]) && i < string.length) {
+      numString += string[i]
+      i++
+    }
+    result[lookup[dir][0]] += numString * lookup[dir][1]
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 29-addChecker
 
@@ -854,7 +878,15 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
+function addChecker(arr, n) {
+  let result = false
+  for (i = 0; i < arr.length - 1; i++) {
+    for (a = i + 1; a < arr.length; a++) {
+      if (arr[i] + arr[a] === n) return true
+    }
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
 
@@ -882,7 +914,27 @@ totalTaskTime( [2, 2, 3, 3, 4, 4], 2 ) //=> 9
 totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
-function totalTaskTime(arr, n) {}
+function totalTaskTime(arr, n) {
+  let time = 0,
+    shortest,
+    threads
+  while (arr.length > n) {
+    //a task for each thread
+    threads = arr.splice(0, n)
+    //time finish first using the spread operator to provide Math.min with a list of values
+    shortest = Math.min(...threads)
+    //add the time for that shortest task
+    time += shortest
+    //reduce each task in threads by the shortest task time and
+    //remove all of those completed "short" tasks
+    threads = threads.map((t) => t - shortest).filter((t) => t)
+    //put any remaining tasks back into threads and do it again (loop)...
+    arr = threads.concat(arr)
+  }
+  //when num remaining arr is less or equal to n, we just need to add the time from the longest remaining task.
+  //the ternary will protects against Math.max returning infinity on an empty array
+  return time + (arr.length ? Math.max(...arr) : 0)
+}
 
 /*-----------------------------------------------------------------*/
 module.exports = {
