@@ -635,9 +635,11 @@ intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 // Your solution for 22-intersection here:
 function intersection(arr1, arr2) {
   let output = []
+  let _arr2 = [...arr2]
   arr1.forEach((x) => {
-    if(x in arr2){
-      output.push(x)
+    let i = _arr2.indexOf(x)
+    if(i > -1){
+      output.push(_arr2.splice(i,1)[0])
     }
   })
   return output
@@ -725,17 +727,19 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 function isWinningTicket(arr) {
+  let winner = true
   for(x of arr){
     console.log(x)
     let winningLetter = String.fromCharCode(x[1])
     let ticketLetters = x[0].split('')
     console.log(winningLetter, '--------', ticketLetters)
     if(!(winningLetter in ticketLetters)){
-      return false
+      winner = false
+      break
     }
     
   }
-  return true
+  return winner
 }
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
@@ -762,7 +766,14 @@ getNumForIP( '192.156.99.15' ) // => 3231474447
 getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
-function getNumForIP(bits) {}
+function getNumForIP(bits) {
+  let sum = 0
+  let pieces = bits.split('.').reverse()
+  pieces.forEach((piece, i) => {
+    sum += parseInt(piece) * 256 ** i
+  })
+  return sum
+}
 /*-----------------------------------------------------------------
 Challenge: 26-toCamelCase
 
@@ -787,7 +798,9 @@ toCamelCase( 'Mama-mia' ) // => 'MamaMia'
 toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
-function toCamelCase(string) {}
+function toCamelCase(string) {
+
+}
 /*-----------------------------------------------------------------
 Challenge: 27-countTheBits
 
@@ -813,7 +826,9 @@ countTheBits( 255 ) //=> 8
 countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
-function countTheBits(n) {}
+function countTheBits(n) {
+  return n.toString(2).split('').filter((bit) => bit === '1').length
+}
 /*-----------------------------------------------------------------
 Challenge: 28-gridTrip
 
@@ -863,7 +878,15 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-function addChecker(arr, n) {}
+function addChecker(arr, n) {
+  let result = false
+  for(let i = 0; i < arr.length - 1; i++) {
+    for(x = i + 1; x < arr.length; x++) {
+      if(arr[i] + arr[x] === n) return true
+    }
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 30-totalTaskTime
 
