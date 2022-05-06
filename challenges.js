@@ -1178,11 +1178,21 @@ gridTrip( [5, 10], 'D5L15U2' ) //-> [2, -5]
 gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
-function gridTrip(arr, string) {
-
-
-
-
+function gridTrip(xyArr, moves) {
+  let result = [xyArr[0], xyArr[1]]
+  const lookup = { U: [0, 1], R: [1, 1], D: [0, -1], L: [1, -1] }
+  let idx = 0
+  while (idx < moves.length) {
+    let dir = moves[idx]
+    idx++
+    let numString = ''
+    while ('0123456789'.includes(moves[idx]) && idx < moves.length) {
+      numString += moves[idx]
+      idx++
+    }
+    result[lookup[dir][0]] += numString * lookup[dir][1]
+  }
+  return result
 }
 /*-----------------------------------------------------------------
 Challenge: 29-addChecker
@@ -1252,10 +1262,24 @@ totalTaskTime( [2, 2, 3, 3, 4, 4], 2 ) //=> 9
 totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
-function totalTaskTime(arr, n) {
-
-
-
+function totalTaskTime(tasks, numThreads) {
+  let time = 0,
+    shortest,
+    threads
+  while (tasks.length > numThreads) {
+    
+    threads = tasks.splice(0, numThreads)
+    
+    shortest = Math.min(...threads)
+    
+    time += shortest
+    
+    threads = threads.map((t) => t - shortest).filter((t) => t)
+    
+    tasks = threads.concat(tasks)
+  }
+  
+  return time + (tasks.length ? Math.max(...tasks) : 0)
 }
 
 /*-----------------------------------------------------------------*/
