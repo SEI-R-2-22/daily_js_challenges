@@ -846,7 +846,25 @@ gridTrip( [5, 10], 'D5L15U2' ) //-> [2, -5]
 gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
-function gridTrip(arr, string) {}
+function gridTrip(xyArr, moves) {
+  // create result array with starting positions
+  var result = [xyArr[0], xyArr[1]]
+  // lookup object for result arr index and multipler for each dir char
+  const lookup = { U: [0, 1], R: [1, 1], D: [0, -1], L: [1, -1] }
+  var idx = 0
+  while (idx < moves.length) {
+    // first char of the move string is the direction to be used to access the lookup object
+    var dir = moves[idx]
+    idx++
+    var numString = ''
+    while ('0123456789'.includes(moves[idx]) && idx < moves.length) {
+      numString += moves[idx]
+      idx++
+    }
+    result[lookup[dir][0]] += numString * lookup[dir][1]
+  }
+  return result
+}
 /*-----------------------------------------------------------------
 Challenge: 29-addChecker
 
