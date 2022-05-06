@@ -500,7 +500,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-function reduceArray(arr, acc, value) {}
+function reduceArray(arr, acc, value) {
+  let initialAcc = value
+  arr.forEach( (el, idx) => {
+    initialAcc = acc(initialAcc, el, idx)
+  })
+  return initialAcc
+}
 /*-----------------------------------------------------------------
 Challenge: 19-flatten
 
@@ -527,7 +533,18 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-function flatten(arr) {}
+function flatten(arr, cache = []) {
+
+  for(let i = 0; i < arr.length; i++) {
+    if(Array.isArray(arr[i])) {
+      flatten(arr[i], cache)
+    }
+    else {
+      cache.push(arr[i])
+    }
+  }
+  return cache
+}
 /*-----------------------------------------------------------------
 Challenge: 20-isPrime
 
@@ -547,7 +564,17 @@ isPrime(29) //=> true
 isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
-function isPrime(n) {}
+function isPrime(n) {
+  if(n === 1 || Math.round(n) !== n){
+    return false
+  }
+  for(let i = 2; i < n; i++){
+    if(n%i == 0){
+      return false
+    }
+  }
+  return true
+}
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
 
@@ -571,7 +598,21 @@ primeFactors(105) //=> [3, 5, 7]
 primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
-function primeFactors(n) {}
+function primeFactors(n) {
+  if(n <= 1){
+    return []
+  }
+  let primes = [];
+  for(let i = 2; i <= n; i++){
+    if(n % i === 0){
+      primes.push(i);
+      n = (n / i);
+      i--;
+      continue
+    }
+  }
+  return primes
+}
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
 
@@ -592,7 +633,15 @@ intersection(['a', 1], [true, 'a', 15]) //=> ['a']
 intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
-function intersection(arr1, arr2) {}
+function intersection(arr1, arr2) {
+  let output = []
+  arr1.forEach((x) => {
+    if(x in arr2){
+      output.push(x)
+    }
+  })
+  return output
+}
 /*-----------------------------------------------------------------
 Challenge: 23-balancedBrackets
 
@@ -614,7 +663,42 @@ balancedBrackets( '[(])' ) // => false
 balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
-function balancedBrackets(string) {}
+function balancedBrackets(string) {
+  let parens = []
+  let curly = []
+  let bracket = []
+  const splitStr = string.split('')
+  splitStr.forEach((x) => {
+    if(x === '('){
+      parens.push(x)
+    }
+    else if(x === '{'){
+      curly.push(x)
+    }
+    else if(x === '['){
+      bracket.push(x)
+    }
+    else if(x === ')'){
+      if(parens.length === 0){
+        return false
+      }
+      parens.pop()
+    }
+    else if(x === '}'){
+      if(curly.length === 0){
+        return false
+      }
+      curly.pop()
+    }
+    else if(x === ']'){
+      if(bracket.length === 0){
+        return false
+      }
+      bracket.pop()
+    }
+  })
+  return (parens.length === 0 && bracket.length === 0 && curly.length === 0)
+}
 /*-----------------------------------------------------------------
 Challenge: 24-isWinningTicket
 
@@ -640,7 +724,19 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
 isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
-function isWinningTicket(arr) {}
+function isWinningTicket(arr) {
+  for(x of arr){
+    console.log(x)
+    let winningLetter = String.fromCharCode(x[1])
+    let ticketLetters = x[0].split('')
+    console.log(winningLetter, '--------', ticketLetters)
+    if(!(winningLetter in ticketLetters)){
+      return false
+    }
+    
+  }
+  return true
+}
 /*-----------------------------------------------------------------
 Challenge: 25-getNumForIP
 
