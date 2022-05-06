@@ -605,11 +605,16 @@ isPrime(200) //=> false
 function isPrime(n) {
   if (n === 2) {
     return true
-  } else if (n % 2 === 0 || n === 1 || Number.isInteger(n) === false) {
-    return false
-  } else {
-    return true
   }
+  if (n % 2 === 0 || n === 1 || Number.isInteger(n) === false) {
+    return false
+  }
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false
+    }
+  }
+  return true
 }
 /*-----------------------------------------------------------------
 Challenge: 21-primeFactors
@@ -634,7 +639,41 @@ primeFactors(105) //=> [3, 5, 7]
 primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
-function primeFactors(n) {}
+function primeFactors(n) {
+  function isPrime(n) {
+    if (n === 2) {
+      return true
+    }
+    if (n % 2 === 0 || n === 1 || Number.isInteger(n) === false) {
+      return false
+    }
+    for (let i = 2; i < n; i++) {
+      if (n % i === 0) {
+        return false
+      }
+    }
+    return true
+  }
+
+  let answerArray = []
+  let prime = 2
+  if (n === 1 || !Number.isInteger(n)) {
+    return []
+  }
+  while (n > 1) {
+    if (isPrime(prime)) {
+      if (Number.isInteger(n / prime)) {
+        n = n / prime
+        answerArray.push(prime)
+      } else {
+        prime++
+      }
+    } else {
+      prime++
+    }
+  }
+  return answerArray
+}
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
 
@@ -974,6 +1013,11 @@ totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 -----------------------------------------------------------------*/
 // Your solution for 30- here:
 function totalTaskTime(arr, n) {
+  const arraySum = (newArr) => {
+    let sum = newArr.reduce((first, second) => first + second, 0)
+    return sum
+  }
+
   let total = 0
   let threadOne = []
   let threadTwo = []
@@ -1017,51 +1061,34 @@ function totalTaskTime(arr, n) {
       total = sumTwo
     }
   } else if (n === 3) {
+    let i = 0
+    let threadOneSum = 0
+    let threadTwoSum = 0
+    let threadThreeSum = 0
+
+    threadOne.push(arr[0])
+    arr.shift()
+    threadTwo.push(arr[0])
+    arr.shift()
+    threadThree.push(arr[0])
+    arr.shift()
     while (arr.length > 0) {
-      threadOne.push(arr[0])
-      arr.shift()
-      threadTwo.push(arr[0])
-      arr.shift()
-      threadThree.push(arr[0])
-      arr.shift()
-      console.log(
-        'thread one: ',
-        threadOne,
-        'thread two: ',
-        threadTwo,
-        'thread three: ',
-        threadThree
-      )
-      console.log('OG array: ', arr)
-      for (
-        let i = 0;
-        i < threadOne.length && threadTwo.length && threadThree.length;
-        i++
-      ) {
-        if (threadOne[i] < threadTwo[i] && threadOne[i] < threadThree[i]) {
-          threadOne.push(arr[0])
-          arr.shift()
-          break
-        } else if (threadTwo[i] < threadOne[i] && threadThree[i]) {
-          threadTwo.push(arr[0])
-          arr.shift()
-          break
-        } else if (threadThree[i] < threadOne[i] && threadTwo[i]) {
-          threadThree.push(arr[0])
-          arr.shift()
-          break
-        }
+      threadOneSum = arraySum(threadOne)
+      threadTwoSum = arraySum(threadTwo)
+      threadThreeSum = arraySum(threadThree)
+      console.log('sums: ', threadOneSum, threadTwoSum, threadThreeSum)
+      if (threadOneSum < threadTwoSum && threadOneSum < threadThreeSum) {
+        threadOne.push(arr[0])
+        arr.shift()
+      } else if (threadTwoSum < threadOneSum && threadTwoSum < threadThreeSum) {
+        threadTwo.push(arr[0])
+        arr.shift()
+      } else {
+        threadThree.push(arr[0])
+        arr.shift()
       }
-      console.log(
-        'thread one: ',
-        threadOne,
-        'thread two: ',
-        threadTwo,
-        'thread three: ',
-        threadThree
-      )
     }
-    //console.log('thread one: ', threadOne, 'thread two: ', threadTwo, 'thread three: ', threadThree)
+
     let sumOne = threadOne.reduce((first, second) => {
       return first + second
     })
