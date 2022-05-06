@@ -742,15 +742,25 @@ intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
 function intersection(arr1, arr2) {
-  let interArray =[]
-  // let longestArray
-  // arr1.length >= arr2.length ? longestArray = arr1: longestArray = arr2;
-  for(let i = 0; i < arr1.length; i++){
-    for(let j = 0; j < arr2.length; j++) {
-      if(arr1[i] === arr2[j]){
-        interArray.push(arr2[j])
-        break
-      }
+  // let interArray =[]
+  // for(let i = 0; i < arr1.length; i++){
+  //   for(let j = 0; j < arr2.length; j++) {
+  //     if(arr1[i] === arr2[j]){
+  //       interArray.push(arr2[j])
+  //       break
+  //     }
+  //   }
+  // }
+  // return interArray
+  // Direction for results taken from solutions.js. My original answer is listed above - basically I had no way of handling duplicate
+  let interArray = []
+  // create an array called handleDupe and set equal to array 2.
+  let handleDupe = [...arr2]
+  // For each element in the first array, index = newarray(same as array2)[array1[index]]. If index is positive (no repeats, push index value to returned array.
+  for(let i = 0; i < arr1.length; i++) {
+    let index = handleDupe.indexOf(arr1[i])
+    if (index > -1) {
+      interArray.push(handleDupe.splice(index, 1)[0])
     }
   }
   return interArray
