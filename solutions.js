@@ -91,7 +91,7 @@ function sumNumbers(nums) {
   }
   return sum
 }
-
+  
 /*--- better solution (use forEach unless you have to exit loop early) ---*/
 // function sumNumbers(nums) {
 //   var sum = 0;
