@@ -78,7 +78,11 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 function sumNumbers(nums) {
-  return nums.reduce((acc, num) => acc + num, 0)
+  let sum = 0
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i]
+  }
+  return sum
 }
 /*-----------------------------------------------------------------
 Challenge: 04-addList
@@ -281,7 +285,7 @@ isPalindrome(''); //=> true
 function isPalindrome(string) {
   string = string.toLowerCase()
   while (string.includes(' ')) string = string.replace(' ', ' ')
-  for (let i = 0; i < Math.floor(str.length / 2); i++) {
+  for (let i = 0; i < Math.floor(string.length / 2); i++) {
     if (string.charAt(i) !== string.charAt(string.length - i - 1)) return false
   }
   return true
@@ -384,7 +388,7 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 // Your solution for 15-mergeObjects here:
 function mergeObjects(target, ...objects) {
   objects.forEach(function (obj) {
-    for (var key in obj) {
+    for (let key in obj) {
       target[key] = obj[key]
     }
   })
