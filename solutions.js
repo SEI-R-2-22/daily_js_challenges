@@ -85,7 +85,7 @@ function addTwoNumbers(num1, num2) {
 
 /*--- okay solution ---*/
 function sumNumbers(nums) {
-  var sum = 0
+  let sum = 0
   for (var i = 0; i < nums.length; i++) {
     sum += nums[i]
   }
